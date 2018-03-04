@@ -1,0 +1,129 @@
+= Probabilités & Statistiques
+L2 -- 2O17/2O18 -- Enseignant: Alain Berthomieu
+:sectnums:
+:toc:
+:b: $\cB$
+:u: $\gO$
+:w: $\go$
+
+include_latex_macros::m.tex[]
+
+== Le Modèle de Kolmogorov
+
+=== Evènements
+
+*Univers* $\gO$ : l'ensemble des issues possibles d'une expérience aléatoire.
+
+*Evènement* $A \subset \gO$ : contient les résultats pour lesquels l'évènement a eu lieu.
+
+====
+*AXIOM*
+
+Soient $A,B,(A_n)$ des évènements. Alors :
+
+- $\bar{A} \subset \gO$
+- $ A \cap B \subset \gO$
+- $A \cup B \subset \gO$
+- $\bigcup\limits_{\sN} A_n \subset \gO$
+====
+
+$\go \in \bigcup\limits_{\sN} A_n$ si et seulement si
+$\exists n \in \sN, \go \in A_n$.
+
+====
+*DEF*
+
+Une *tribu* sur $\gO$ est un ensemble
+$\cB \subset \cP(\gO)$
+tel que :
+
+- $\gO \in \cB$
+- $\forall A \in \cB, \bar{A} \in \cB$
+- $\forall (A_n) \in \cB^{\sN},$
+$\bigcup\limits_{\sN} A_n \in \cB$
+====
+
+$\{\varnothing, \gO\}$ et $\cP(\gO)$ sont des tribus.
+
+====
+*PROP*
+
+Si $\cB$ est une *tribu* sur $\gO$, alors :
+
+$\varnothing \in \cB$
+
+$\forall E,F \in \cB:$ $\quad$
+$E \cup F \in \cB,$ $\quad$
+$E \cap F \in \cB,$ $\quad$
+$E \setminus F = E \cap \overbar{F} \in \cB$
+
+$\cB$ est stable par intersection dénombrable.
+====
+
+====
+*DEF*
+
+Un espace probabilisable (EP) est un ensemble {U} muni d'une tribu $\cB$
+tel que $\forall \go \in \gO, \{\go\} \in \cB$.
+
+Les éléments de {B} sont appelés *évènements*.
+
+{U} est l'évènement *certain*, $\void$ l'évènement *impossible*.
+
+$A$ et $B$ sont *incompatibles* _ssi_ $A \cap B = \void$.
+
+$A$ *implique* ou *entraîne* $B$ _ssi_ $A \subset B$.
+====
+
+====
+*PROP*
+
+Pour un EP {U} fini ou dénombrable,
+la seule tribu possible est $\cB = \cP(\gO)$.
+
+La condition $\forall \go \in \gO, \{\go\} \in \cB$ entraîne en effet
+$\cP(\gO) \subset \cB$ du fait de la stabilité par union dénombrable de {B}.
+
+Dans le cas général : tous les sous-ensembles finis ou dénombrables d'un EP sont dans {B}.
+====
+
+=== Probabilité
+
+====
+*DEF*
+
+Une probabilité sur un EP est une application :
+\[
+\begin{align}
+\sP : \cB &\to      [0,1] \\
+      E   &\mapsto  \sP(E)
+\end{align}
+\]
+tel que :
+
+- $\sP(\gO) = 1$
+- *$\gs$-additivité* :
+Si $(A_n)$ sont deux à deux incompatibles, alors :
++
+$\sP(\bigcup A_n) = \sum \sP(A_n)$
+====
+
+
+====
+*PROP*
+
+- $\sP(\void) = 0$
+puisque $\sP(\void) = \sP(\bigcup\limits_{\sN} \void)$
+$= \sum\limits_{\sN} \sP(\void)$.
+- Si $A \subset B$, alors $B = A \uplus (B \setminus A)$
+d'où $\sP(B) = \sP(A) + \sP(B \setminus A)$
++
+On en déduit : $\sP(B) \geq \sP(A)$ et
+$\sP(B \setminus A) = \sP(B) - \sP(A)$
++
+d'où en particulier :
+$\sP(\bar{E}) = \sP(\gO) - \sP(E) = 1 - \sP(E)$
+
+- $\sP(A \cup B) = \sP(A \uplus (B \setminus (A \cap B)))$
+$= \sP(A) + \sP(B) - \sP(A \cap B)$
+====

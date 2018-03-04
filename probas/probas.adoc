@@ -5,6 +5,11 @@ L2 -- 2O17/2O18 -- Enseignant: Alain Berthomieu
 :b: $\cB$
 :u: $\gO$
 :w: $\go$
+:axiom: $\Large{\mathbb{A}}$
+:def: $\huge{\triangleq}$
+:prop: $\Large{\mathcal{P}}$
+:eg: $\Large{\mathcal{eg}}$
+:nota: $\huge{i}$
 
 include_latex_macros::m.tex[]
 
@@ -12,118 +17,107 @@ include_latex_macros::m.tex[]
 
 === Evènements
 
-*Univers* $\gO$ : l'ensemble des issues possibles d'une expérience aléatoire.
+[horizontal]
+{DEF}::
+*Univers* $\gO$ : l'ensemble des issues possibles
+  d'une expérience aléatoire. +
+*Evènement* $A \subset \gO$ : contient les résultats
+  pour lesquels l'évènement a eu lieu.
 
-*Evènement* $A \subset \gO$ : contient les résultats pour lesquels l'évènement a eu lieu.
+{AXIOM}::
+  Soient $A,B,(A_n)$ des évènements. Alors : +
+  $\bar{A} \subset \gO$ +
+  $ A \cap B \subset \gO$ +
+  $A \cup B \subset \gO$ +
+  $\bigcup\limits_{\sN} A_n \subset \gO$
 
-====
-*AXIOM*
-
-Soient $A,B,(A_n)$ des évènements. Alors :
-
-- $\bar{A} \subset \gO$
-- $ A \cap B \subset \gO$
-- $A \cup B \subset \gO$
-- $\bigcup\limits_{\sN} A_n \subset \gO$
-====
-
+{NOTA}::
 $\go \in \bigcup\limits_{\sN} A_n$ si et seulement si
 $\exists n \in \sN, \go \in A_n$.
 
-====
-*DEF*
+{DEF}::
+  Une *tribu* sur $\gO$ est un ensemble $\cB \subset \cP(\gO)$
+  tel que : +
+  $\gO \in \cB$ +
+  $\forall A \in \cB, \bar{A} \in \cB$ +
+  $\forall (A_n) \in \cB^{\sN},$
+    $\bigcup\limits_{\sN} A_n \in \cB$
 
-Une *tribu* sur $\gO$ est un ensemble
-$\cB \subset \cP(\gO)$
-tel que :
-
-- $\gO \in \cB$
-- $\forall A \in \cB, \bar{A} \in \cB$
-- $\forall (A_n) \in \cB^{\sN},$
-$\bigcup\limits_{\sN} A_n \in \cB$
-====
-
+{EG}::
 $\{\varnothing, \gO\}$ et $\cP(\gO)$ sont des tribus.
 
-====
-*PROP*
-
-Si $\cB$ est une *tribu* sur $\gO$, alors :
-
-$\varnothing \in \cB$
-
+{PROP}::
+Si $\cB$ est une *tribu* sur $\gO$, alors : +
+$\varnothing \in \cB$ +
 $\forall E,F \in \cB:$ $\quad$
-$E \cup F \in \cB,$ $\quad$
-$E \cap F \in \cB,$ $\quad$
-$E \setminus F = E \cap \overbar{F} \in \cB$
-
+  $E \cup F \in \cB,$ $\quad$
+  $E \cap F \in \cB,$ $\quad$
+  $E \setminus F = E \cap \overbar{F} \in \cB$ +
 $\cB$ est stable par intersection dénombrable.
-====
 
-====
-*DEF*
-
+{DEF}::
 Un espace probabilisable (EP) est un ensemble {U} muni d'une tribu $\cB$
-tel que $\forall \go \in \gO, \{\go\} \in \cB$.
-
-Les éléments de {B} sont appelés *évènements*.
-
-{U} est l'évènement *certain*, $\void$ l'évènement *impossible*.
-
-$A$ et $B$ sont *incompatibles* _ssi_ $A \cap B = \void$.
-
+  tel que $\forall \go \in \gO, \{\go\} \in \cB$. +
+Les éléments de {B} sont appelés *évènements*. +
+{U} est l'évènement *certain*, $\void$ l'évènement *impossible*. +
+$A$ et $B$ sont *incompatibles* _ssi_ $A \cap B = \void$. +
 $A$ *implique* ou *entraîne* $B$ _ssi_ $A \subset B$.
-====
 
-====
-*PROP*
-
+{PROP}::
 Pour un EP {U} fini ou dénombrable,
-la seule tribu possible est $\cB = \cP(\gO)$.
-
+la seule tribu possible est $\cB = \cP(\gO)$. +
 La condition $\forall \go \in \gO, \{\go\} \in \cB$ entraîne en effet
-$\cP(\gO) \subset \cB$ du fait de la stabilité par union dénombrable de {B}.
+  $\cP(\gO) \subset \cB$ du fait de la stabilité
+  par union dénombrable de {B}. +
+Dans le cas général : tous les sous-ensembles finis
+  ou dénombrables d'un EP sont dans {B}.
 
-Dans le cas général : tous les sous-ensembles finis ou dénombrables d'un EP sont dans {B}.
-====
 
 === Probabilité
 
-====
-*DEF*
-
-Une probabilité sur un EP est une application :
+[horizontal]
+{DEF}::
+Une probabilité sur un EP est une application
 \[
-\begin{align}
-\sP : \cB &\to      [0,1] \\
-      E   &\mapsto  \sP(E)
-\end{align}
+  \sP : \biggl(
+  \begin{align}
+    \cB &\to [0,1] \\
+    A &\mapsto \sP(A)
+  \end{align}
 \]
-tel que :
-
-- $\sP(\gO) = 1$
+telle que : +
+- $\sP(\gO) = 1$ +
 - *$\gs$-additivité* :
-Si $(A_n)$ sont deux à deux incompatibles, alors :
-+
+  Si $(A_n)$ sont deux à deux incompatibles, alors : +
 $\sP(\bigcup A_n) = \sum \sP(A_n)$
-====
 
-
-====
-*PROP*
-
+{PROP}::
 - $\sP(\void) = 0$
-puisque $\sP(\void) = \sP(\bigcup\limits_{\sN} \void)$
-$= \sum\limits_{\sN} \sP(\void)$.
+  puisque $\sP(\void) = \sP(\bigcup_{\sN} \void)$
+  $= \sum_{\sN} \sP(\void)$. +
 - Si $A \subset B$, alors $B = A \uplus (B \setminus A)$
-d'où $\sP(B) = \sP(A) + \sP(B \setminus A)$
-+
+  d'où $\sP(B) = \sP(A) + \sP(B \setminus A)$ +
 On en déduit : $\sP(B) \geq \sP(A)$ et
-$\sP(B \setminus A) = \sP(B) - \sP(A)$
-+
+  $\sP(B \setminus A) = \sP(B) - \sP(A)$ +
 d'où en particulier :
-$\sP(\bar{E}) = \sP(\gO) - \sP(E) = 1 - \sP(E)$
-
+  $\sP(\bar{E}) = \sP(\gO) - \sP(E) = 1 - \sP(E)$ +
 - $\sP(A \cup B) = \sP(A \uplus (B \setminus (A \cap B)))$
-$= \sP(A) + \sP(B) - \sP(A \cap B)$
-====
+  $= \sP(A) + \sP(B) - \sP(A \cap B)$
+
+{NOTA}::
+$\{\go\} \in \cB$, donc pour tout $A \in \cB$ dénombrable,
+$\sP(A) = \sum_{A} \sP(\{\go\})$. +
+Si {U} est dénombrable, cela permet de calculer $\sP(A)$ pour tout évènement.
+
+{DEF}::
+Hypothèse d'équiprobabilité :
+\[
+  \forall \go \in \gO, \quad
+  \sP(\{\go\}) = \frac{1}{\card \gO}, \quad
+  \sP(A) = \frac{\card A}{\card \gO}
+\]
+
+{DEF}::
+Un évènement $A$ est *quasi-impossible* ssi $\sP(A) = 0$. +
+Un évènement $A$ est *quasi-certain* ssi $\sP(A) = 1$
+  ssi $\sP(\bar{A})$ est quasi-impossible.

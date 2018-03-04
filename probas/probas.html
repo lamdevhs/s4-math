@@ -496,6 +496,8 @@ $(document).on('page:load', ready2);
 \newcommand{\gs}{\sigma}
 \newcommand{\go}{\omega}
 \newcommand{\gO}{\Omega}
+
+\newcommand{\card}{card\,}
 \)
 </div>
 </div>
@@ -504,194 +506,159 @@ $(document).on('page:load', ready2);
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_evènements">1.1. Evènements</h3>
-<div class="paragraph">
-<p><strong>Univers</strong> \(\gO\) : l&#8217;ensemble des issues possibles d&#8217;une expérience aléatoire.</p>
-</div>
-<div class="paragraph">
-<p><strong>Evènement</strong> \(A \subset \gO\) : contient les résultats pour lesquels l&#8217;évènement a eu lieu.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>AXIOM</strong></p>
-</div>
-<div class="paragraph">
-<p>Soient \(A,B,(A_n)\) des évènements. Alors :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>\(\bar{A} \subset \gO\)</p>
-</li>
-<li>
-<p>\( A \cap B \subset \gO\)</p>
-</li>
-<li>
-<p>\(A \cup B \subset \gO\)</p>
-</li>
-<li>
-<p>\(\bigcup\limits_{\sN} A_n \subset \gO\)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+\(\huge{\triangleq}\)
+</td>
+<td class="hdlist2">
+<p><strong>Univers</strong> \(\gO\) : l&#8217;ensemble des issues possibles
+  d&#8217;une expérience aléatoire.<br>
+<strong>Evènement</strong> \(A \subset \gO\) : contient les résultats
+  pour lesquels l&#8217;évènement a eu lieu.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\Large{\mathbb{A}}\)
+</td>
+<td class="hdlist2">
+<p>Soient \(A,B,(A_n)\) des évènements. Alors :<br>
+\(\bar{A} \subset \gO\)<br>
+\( A \cap B \subset \gO\)<br>
+\(A \cup B \subset \gO\)<br>
+\(\bigcup\limits_{\sN} A_n \subset \gO\)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\huge{i}\)
+</td>
+<td class="hdlist2">
 <p>\(\go \in \bigcup\limits_{\sN} A_n\) si et seulement si
 \(\exists n \in \sN, \go \in A_n\).</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>DEF</strong></p>
-</div>
-<div class="paragraph">
-<p>Une <strong>tribu</strong> sur \(\gO\) est un ensemble
-\(\cB \subset \cP(\gO)\)
-tel que :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>\(\gO \in \cB\)</p>
-</li>
-<li>
-<p>\(\forall A \in \cB, \bar{A} \in \cB\)</p>
-</li>
-<li>
-<p>\(\forall (A_n) \in \cB^{\sN},\)
-\(\bigcup\limits_{\sN} A_n \in \cB\)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\huge{\triangleq}\)
+</td>
+<td class="hdlist2">
+<p>Une <strong>tribu</strong> sur \(\gO\) est un ensemble \(\cB \subset \cP(\gO)\)
+tel que :<br>
+\(\gO \in \cB\)<br>
+\(\forall A \in \cB, \bar{A} \in \cB\)<br>
+\(\forall (A_n) \in \cB^{\sN},\)
+  \(\bigcup\limits_{\sN} A_n \in \cB\)</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\Large{\mathcal{eg}}\)
+</td>
+<td class="hdlist2">
 <p>\(\{\varnothing, \gO\}\) et \(\cP(\gO)\) sont des tribus.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>PROP</strong></p>
-</div>
-<div class="paragraph">
-<p>Si \(\cB\) est une <strong>tribu</strong> sur \(\gO\), alors :</p>
-</div>
-<div class="paragraph">
-<p>\(\varnothing \in \cB\)</p>
-</div>
-<div class="paragraph">
-<p>\(\forall E,F \in \cB:\) \(\quad\)
-\(E \cup F \in \cB,\) \(\quad\)
-\(E \cap F \in \cB,\) \(\quad\)
-\(E \setminus F = E \cap \overbar{F} \in \cB\)</p>
-</div>
-<div class="paragraph">
-<p>\(\cB\) est stable par intersection dénombrable.</p>
-</div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>DEF</strong></p>
-</div>
-<div class="paragraph">
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\Large{\mathcal{P}}\)
+</td>
+<td class="hdlist2">
+<p>Si \(\cB\) est une <strong>tribu</strong> sur \(\gO\), alors :<br>
+\(\varnothing \in \cB\)<br>
+\(\forall E,F \in \cB:\) \(\quad\)
+  \(E \cup F \in \cB,\) \(\quad\)
+  \(E \cap F \in \cB,\) \(\quad\)
+  \(E \setminus F = E \cap \overbar{F} \in \cB\)<br>
+\(\cB\) est stable par intersection dénombrable.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\huge{\triangleq}\)
+</td>
+<td class="hdlist2">
 <p>Un espace probabilisable (EP) est un ensemble \(\gO\) muni d&#8217;une tribu \(\cB\)
-tel que \(\forall \go \in \gO, \{\go\} \in \cB\).</p>
-</div>
-<div class="paragraph">
-<p>Les éléments de \(\cB\) sont appelés <strong>évènements</strong>.</p>
-</div>
-<div class="paragraph">
-<p>\(\gO\) est l&#8217;évènement <strong>certain</strong>, \(\void\) l&#8217;évènement <strong>impossible</strong>.</p>
-</div>
-<div class="paragraph">
-<p>\(A\) et \(B\) sont <strong>incompatibles</strong> <em>ssi</em> \(A \cap B = \void\).</p>
-</div>
-<div class="paragraph">
-<p>\(A\) <strong>implique</strong> ou <strong>entraîne</strong> \(B\) <em>ssi</em> \(A \subset B\).</p>
-</div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>PROP</strong></p>
-</div>
-<div class="paragraph">
+  tel que \(\forall \go \in \gO, \{\go\} \in \cB\).<br>
+Les éléments de \(\cB\) sont appelés <strong>évènements</strong>.<br>
+\(\gO\) est l&#8217;évènement <strong>certain</strong>, \(\void\) l&#8217;évènement <strong>impossible</strong>.<br>
+\(A\) et \(B\) sont <strong>incompatibles</strong> <em>ssi</em> \(A \cap B = \void\).<br>
+\(A\) <strong>implique</strong> ou <strong>entraîne</strong> \(B\) <em>ssi</em> \(A \subset B\).</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\Large{\mathcal{P}}\)
+</td>
+<td class="hdlist2">
 <p>Pour un EP \(\gO\) fini ou dénombrable,
-la seule tribu possible est \(\cB = \cP(\gO)\).</p>
-</div>
-<div class="paragraph">
-<p>La condition \(\forall \go \in \gO, \{\go\} \in \cB\) entraîne en effet
-\(\cP(\gO) \subset \cB\) du fait de la stabilité par union dénombrable de \(\cB\).</p>
-</div>
-<div class="paragraph">
-<p>Dans le cas général : tous les sous-ensembles finis ou dénombrables d&#8217;un EP sont dans \(\cB\).</p>
-</div>
-</div>
+la seule tribu possible est \(\cB = \cP(\gO)\).<br>
+La condition \(\forall \go \in \gO, \{\go\} \in \cB\) entraîne en effet
+  \(\cP(\gO) \subset \cB\) du fait de la stabilité
+  par union dénombrable de \(\cB\).<br>
+Dans le cas général : tous les sous-ensembles finis
+  ou dénombrables d&#8217;un EP sont dans \(\cB\).</p>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_probabilité">1.2. Probabilité</h3>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>DEF</strong></p>
-</div>
-<div class="paragraph">
-<p>Une probabilité sur un EP est une application :
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+\(\huge{\triangleq}\)
+</td>
+<td class="hdlist2">
+<p>Une probabilité sur un EP est une application
 
 \[
-\begin{align}
-\sP : \cB &\to      [0,1] \\
-      E   &\mapsto  \sP(E)
-\end{align}
+  \sP : \biggl(
+  \begin{align}
+    \cB &\to [0,1] \\
+    A &\mapsto \sP(A)
+  \end{align}
 \]
 
 
-tel que :</p>
-</div>
+telle que :<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>\(\sP(\gO) = 1\)</p>
+<p>\(\sP(\gO) = 1\)<br></p>
 </li>
 <li>
 <p><strong>\(\gs\)-additivité</strong> :
-Si \((A_n)\) sont deux à deux incompatibles, alors :</p>
-<div class="paragraph">
-<p>\(\sP(\bigcup A_n) = \sum \sP(A_n)\)</p>
-</div>
+  Si \((A_n)\) sont deux à deux incompatibles, alors :<br>
+\(\sP(\bigcup A_n) = \sum \sP(A_n)\)</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>PROP</strong></p>
-</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\Large{\mathcal{P}}\)
+</td>
+<td class="hdlist2">
 <div class="ulist">
 <ul>
 <li>
 <p>\(\sP(\void) = 0\)
-puisque \(\sP(\void) = \sP(\bigcup\limits_{\sN} \void)\)
-\(= \sum\limits_{\sN} \sP(\void)\).</p>
+puisque \(\sP(\void) = \sP(\bigcup_{\sN} \void)\)
+\(= \sum_{\sN} \sP(\void)\).<br></p>
 </li>
 <li>
 <p>Si \(A \subset B\), alors \(B = A \uplus (B \setminus A)\)
-d&#8217;où \(\sP(B) = \sP(A) + \sP(B \setminus A)\)</p>
-<div class="paragraph">
-<p>On en déduit : \(\sP(B) \geq \sP(A)\) et
-\(\sP(B \setminus A) = \sP(B) - \sP(A)\)</p>
-</div>
-<div class="paragraph">
-<p>d&#8217;où en particulier :
-\(\sP(\bar{E}) = \sP(\gO) - \sP(E) = 1 - \sP(E)\)</p>
-</div>
+  d&#8217;où \(\sP(B) = \sP(A) + \sP(B \setminus A)\)<br>
+On en déduit : \(\sP(B) \geq \sP(A)\) et
+  \(\sP(B \setminus A) = \sP(B) - \sP(A)\)<br>
+d&#8217;où en particulier :
+  \(\sP(\bar{E}) = \sP(\gO) - \sP(E) = 1 - \sP(E)\)<br></p>
 </li>
 <li>
 <p>\(\sP(A \cup B) = \sP(A \uplus (B \setminus (A \cap B)))\)
@@ -699,7 +666,44 @@ d&#8217;où \(\sP(B) = \sP(A) + \sP(B \setminus A)\)</p>
 </li>
 </ul>
 </div>
-</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\huge{i}\)
+</td>
+<td class="hdlist2">
+<p>\(\{\go\} \in \cB\), donc pour tout \(A \in \cB\) dénombrable,
+\(\sP(A) = \sum_{A} \sP(\{\go\})\).<br>
+Si \(\gO\) est dénombrable, cela permet de calculer \(\sP(A)\) pour tout évènement.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\huge{\triangleq}\)
+</td>
+<td class="hdlist2">
+<p>Hypothèse d&#8217;équiprobabilité :
+
+\[
+  \forall \go \in \gO, \quad
+  \sP(\{\go\}) = \frac{1}{\card \gO}, \quad
+  \sP(A) = \frac{\card A}{\card \gO}
+\]
+</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+\(\huge{\triangleq}\)
+</td>
+<td class="hdlist2">
+<p>Un évènement \(A\) est <strong>quasi-impossible</strong> ssi \(\sP(A) = 0\).<br>
+Un évènement \(A\) est <strong>quasi-certain</strong> ssi \(\sP(A) = 1\)
+  ssi \(\sP(\bar{A})\) est quasi-impossible.</p>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -707,7 +711,7 @@ d&#8217;où \(\sP(B) = \sP(A) + \sP(B \setminus A)\)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-04 06:58:44 CET
+Last updated 2018-03-04 08:44:30 CET
 </div>
 </div>
 <script type="text/x-mathjax-config">

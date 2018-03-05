@@ -10,6 +10,12 @@ L2 -- 2O17/2O18 -- Enseignant: Alain Berthomieu
 :prop: $\Large{\mathcal{P}}$
 :eg: $\Large{\mathcal{eg}}$
 :nota: $\huge{i}$
+:formula: $\huge{\phi}$
+:theorem: $\huge{\top}$
+:proof: $\huge{\square}$
+:va: variable aléatoire
+:vad: {va} discrète
+:sigma: $\gs$
 
 include_latex_macros::m.tex[]
 
@@ -87,7 +93,7 @@ Une probabilité sur un EP est une application
 \]
 telle que : +
 - $\sP(\gO) = 1$ +
-- *$\gs$-additivité* :
+- *{sigma}-additivité* :
   Si $(A_n)$ sont deux à deux incompatibles, alors : +
 $\sP(\bigcup A_n) = \sum \sP(A_n)$
 
@@ -121,3 +127,171 @@ Hypothèse d'équiprobabilité :
 Un évènement $A$ est *quasi-impossible* ssi $\sP(A) = 0$. +
 Un évènement $A$ est *quasi-certain* ssi $\sP(A) = 1$
   ssi $\sP(\bar{A})$ est quasi-impossible.
+
+=== Conditionnement
+
+[horizontal]
+{DEF}::
+La *probabilité conditionnelle* de $A$ sachant $B$ est la probabilité que $A$
+  a eu lieu après avoir constaté que $B$ a eu lieu. Notation : $\sP_B(A)$.
+  Intuitivement, on en déduit que l'on doit avoir : +
+$\sP(A \cap B) = \sP(B)\sP_B(A)$
+  (_formule des probabilités composées_). +
+Lorsque $\sP(B) \neq 0$, cela donne :
+  $\sP_B(A) = \frac{\sP(A \cap B)}{\sP(B)}$.
+
+{DEF}::
+Un *système complet/exhaustif* de {U} est une famille finie ou dénombrable
+  d'évènements telle que : +
+$\forall i, j, \quad A_i \cap A_j = \void$ +
+$ \bigcup A_i = \gO$ +
+$\forall i, \quad \sP(A_i) > 0$ +
+On obtient alors : +
+$\forall X \in \cB, \quad$
+  $\sP(X) = \sum \sP(A_i \inter X)$
+  $= \sum \sP_{A_i}(X)\sP(A_i)$
+
+{FORMULA}::
+*Formule de Bayes* : Soient $(A_i)$ un système complet fini de {U},
+  et $X \in \cB$. Alors :
+\[
+\forall i, \quad \sP_X(A_i)
+  = \frac{ \sP(A_i \inter X) } { \sP(X) }
+  = \frac{ \sP_{A_i}(X)\sP(A_i) }
+    { \sum_1^n \sP_{A_k}(X)\sP(A_k) }
+\]
+La probabilité de $A_i$ _a priori_ est $\sP(A_i)$. +
+La probabilité de $A_i$ _a posteriori_ (après la réalisation de $X$)
+  est $\sP_X(A_i)$.
+
+{THEOREM}::
+*Théorème de Bayes* : Pour $\P(B) \neq 0$,
+\[
+  \P_B(A) \equiv
+  \P(A|B) = \P(B|A) \frac{\P(A)}{\P(B)}
+  = \P(B|A) \frac{\P(A)}
+      {\P(A)\P(B|A) + \P(\bar{A})\P(B|\bar{A})}
+\]
+
+{PROOF}::
+\[
+  \P(A|B) \triangleq \frac{\P(A \inter B)}{\P(B)}
+  = \frac{\P(A)\P(B|A)}{\P(B)}
+\]
+et bien sûr $(A, \bar{A})$ est un système exhaustif fini de {U},
+  au moins lorsque $0 < \P(A) < 1$, et ainsi : +
+$P(B) = \P(A)\P(B|A) + \P(\bar{A})\P(B|\bar{A})$ +
+Si $\P(A) = 0$, on obtient $\P(A|B) = 0$,
+  et si $\P(A) = 1$, alors
+  $\P(A|B) = \frac{\P(A)\P(B|A)} {\P(A)\P(B|A)} = 1 = \P(A)$.
+
+=== Indépendance
+
+[horizontal]
+{DEF}::
+$A, B \in \cB$ sont *indépendants* ssi $\P(A \inter B) = \P(A)\P(B)$.
+
+{PROP}::
+. Tout évènement X quasi-impossible est indépendant de tout évènement.
+. Si $A$ et $B$ sont indépendants,
+  alors $A$ et $\bar{B}$ le sont aussi.
+. Deux évènements incompatibles mais non quasi-impossibles
+  ne sont pas indépendants.
+
+{PROOF}::
+. Si $\P(B) = 0$, alors, $\forall A,\;$
+  $\P(A \inter B) = 0\;$ puisque $\;A \inter B \subset B,\;$ et
+    $\;\P(A)\P(B) = 0$.
+
+. {blank}
+\[
+\begin{align}
+  \P(A \inter \bar{B}) &= \P(A \setminus (A \inter B))
+    = \P(A) - \P(A \inter B) \\
+    &= \P(A) - \P(A)\P(B)
+    = \P(A)(1 - \P(B)) \\
+    &= \P(A)\P(\bar{B})
+\end{align}
+\]
+
+. $A \inter B = \void \txt{et} \P(A) > 0, \P(B) > 0$
+  $\quad \implies \quad$
+  $\P(A \inter B) = 0 \neq \P(A)\P(B)$.
+
+{DEF}::
+- $(B_j)_J$ dénombrable est une *famille d'évènements indépendants*
+    ssi +
+  $\forall I \subset J \txt{fini}, \quad$
+    $\sP(\biginter_I B_i) = \prod_I \P(B_i)$
+- $(A_i)$ et $(B_j)$, systèmes complets de {U},
+    sont *indépendants* ssi +
+  $\forall i, j, \quad A_i \txt{et} B_j \;$ sont indépendants.
+
+
+
+== Variables aléatoires discrètes
+
+=== Définitions
+
+[horizontal]
+{DEF}::
+Soit $(\gO, \cB, \sP)$. Une *variable aléatoire réelle* sur {U}
+  est une application $X : \gO \to \sR$ +
+telle que, pour tout intervalle $I \subset \sR$,
+  $\preim X (I) \in \cB$.
+
+{DEF}::
+$X$ est une *{va} discrète* ssi $\,\exists E \subset \sR$ dénombrable
+  tel que $\sP(\preim X(E)) = 1$. +
+Cela est équivalent à dire qu'il existe $A \in \cB$ quasi-certain
+  tel que $X(A) \subset \sR$ soit dénombrable. +
+Autrement dit, la restriction de $X$ à $A$ ne peut prendre
+  qu'un nombre fini de valeurs.
++
+Cette définition a bien un sens car :
+\[
+  \preim X(E) \equiv \set{X \in E}
+  = \biguplus_{a \in E} \set{X = a}
+\]
+Et bien sûr $\set{X = a} = \preim X([a, a\]) \in \cB$
+  du fait que $X$ est une {va}. D'où
+  $\set{X \in E} \in \cB$ puisque toute tribu est stable
+  par union dénombrable.
++
+Plus généralement :
+\[
+  \forall A \subset E, \quad
+  \P(X \in A) = \sum_{a \in A} \P(X = a)
+\]
+L'on peut sommer sur $A$ sans problème car on sait que
+  $\set{X \in A} \subset \set{X \in E}$ +
+  d'où $\quad \P(X \in A) \leq \P(X \in E) = 1$.
+
+{DEF}::
+Soit X une {VAD}, et $E := \set{a \in \sR \setcond \P(X = a) > 0}$.
+La *loi* de X est l'application:
+\[
+  \P_X : \mapdef{E}{(0, 1]}{a}{\P(X = a)}
+\]
+
+{EG}::
+Lois discrètes classiques :
+- loi certaine : une valeur *possible*, de probabilité 1
+- loi uniforme : $N := \card E < \infty \txt{et}$
+  $\forall a \in E, \P(X = a) = \ifrac{N}$
+
+{DEF}::
+Une *{VA} de Bernouilli* X de paramètre $\;0 < p < 1$ a deux valeurs
+  *possibles*, 0 et 1, et +
+$\P(X = 1) = p, \quad \P(X = 0) = 1 - p$.
+
+{DEF}::
+$X \txt{et} Y$, {VAD} sont indépendantes ssi +
+$\forall x, y \in \sR, \quad$
+  $\P(\set{X = x} \inter \set{Y = y}) = \P(X = x)\P(Y = y)$.
+
+{DEF}::
+*Processus de Bernouilli* :
+  On répète indéfiniment une expérience à deux issues
+  ($S \txt{et} \bar{S}$), avec
+  $\P(S) = p et

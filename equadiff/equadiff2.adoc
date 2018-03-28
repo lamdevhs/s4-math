@@ -1,0 +1,228 @@
+= Equations Différentielles
+L2 -- 2O17/2O18 -- Enseignant: Alain Berthomieu
+:sectnums:
+:toc:
+:b: $\cB$
+:u: $\gO$
+:w: $\go$
+:axiom: $\huge{\mathbb{A}}$
+:def: $\huge{\triangleq}$
+:prop: $\huge{\mathcal{P}}$
+:eg: $\huge{\mathcal{eg}}$
+:nota: $\huge{i}$
+:formula: $\huge{\phi}$
+:theorem: $\huge{\top}$
+:proof: $\huge{\square}$
+:method: $\huge{\mu}$
+:lemme: $\huge{\mathscr{L}}$
+:ev: espace vectoriel
+:evs: espaces vectoriels
+:sev: sous-espace vectoriel
+:sevs: sous-espaces vectoriels
+:sea: sous-espace affine
+:seas: sous-espaces affines
+:applin: application linéaire
+:edlin: équation différentielle linéaire
+:ed: équation différentielle
+:ed1: équation différentielle du 1er ordre
+:sys: système
+:s0: $(S_0)$
+:s: $(S)$
+
+include_latex_macros::m.tex[]
+
+
+== Systèmes Différentiels du 1er Ordre
+
+=== Résolution $$$$$
+
+==== Trigonalisation
+
+Dans $\sC$, toute matrice est trigonalisable.
+
+$Y' = AY + B \ \ \ (S)$ +
+$\exists P \ inversible, P \ triangulaire, \qquad A = PTP^{-1}$ +
+Posons $Z := P^{-1}Y$. Alors $Z' = P^{-1}Y'$. +
+Multiplions $(S)$ par $P^{-1}$:
+\[
+  P^{-1} Y' = P^{-1}AY + P^{-1} B
+  = P^{-1}(PTP^{-1})Y + P^{-1} B
+\]
+On reconnaît alors :
+\[
+
+\]
+
+==== Sous-Espace Affine d'un Espace Vectoriel
+
+Soit G un {SEV} de E. Soit $x \in E$ quelconque.
+
+[horizontal]
+{DEF}:: Le sous-ensemble A de E défini par:
+\[
+  A = \set{x + v \setcond v \in G}
+  = \set{w \in E \setcond \exists v \in G, w = x + v}
+  = \set{w \in E \setcond w - x \in G}
+\]
+est un *sous-espace affine* de E passant par x et dirigé par G. +
+Sa dimension est par définition celle de G.
+
+==== Ensemble des solutions d'un système linéaire
+
+Soit E, F deux {EVS}, $L : E \to F$ une {applin}. +
+$\forall b \in F,$ on peut considérer le système linéaire $(S) \  L(x) = b$ d'inconnue $x \in E$. +
+Si $b = 0$, le {sys} est dit *homogène*. Sinon, $(S_0) \  L(x) = 0_F$ est appelé
+  *système homogène associé à (S)*.
+
+[horizontal]
+{THEOREM}::
+L'ensemble des solutions de {S0} est un {sev} de E: c'est le noyau de L. +
+L'ensemble des solutions de {S} est soit vide soit égal à un {sea} de E
+  dirigé par $\ker L$.
+
+{PROOF}::
+$0_{E \to F}$ est linéaire, et on a bien $Sol(S) = \void$ pour tout $b \neq 0$. +
+Si $Sol(S) \neq \void$, soit alors $v \in Sol(S)$.
+  Soit $A := \ker L + \set{v}$. Prouvons que $Sol(S) = L^{-1}(b) = A$. +
+- $\forall x \in Sol(S), \  x = (x - v) + v$ +
+  $L(x - v) = L(x) - L(v) = b - b = 0$ +
+  d'où $x - v \in \ker L$, par suite $x \in A$.
+- $\forall y \in A, \exists z \in \ker L, \ L(y) = L(z + v) = 0 + b$ +
+  d'où $y \in Sol(S)$.
+
+=== Equations Différentielles Linéaires Homogènes du 1er Ordre
+
+[horizontal]
+{DEF}::
+Une {EDLIN} du 1er ordre est une équation de la forme :
+\[
+  a(t)y'(t) + b(t)y(t) = g(t) \qquad (E)
+\]
+
+{PROP}::
+Soit I un intervalle réel donné. Soit $F^1(I, \sR)$ l'ensemble des fonctions
+  dérivables sur I, $F(I, \sR)$ celui des fonctions définies sur I.
+Soit alors :
+\[
+  L : \mapdef
+    {F^1(I, \sR)}{F(I, \sR)}
+    {y}{ay' + by}
+\]
+$L$ est linéaire. D'où : +
+$Sol(E_0)$ est un {SEV} de $F^1(I, \sR)$. +
+$Sol(E)$ est soit vide, soit un {SEA} de $F^1(I, \sR)$ dirigé par $Sol(E_0) = \ker L$.
+
+{DEF}::
+Une *solution générale* pour $(E)/(E_0)$ est une formule qui décrit
+  l'ensemble des solutions de l'équation en fonctions de paramètres
+  scalaires. +
+La solution générale pour (E) est la somme d'une *solution particulière*
+  de (E) et de la solution générale pour $(E_0)$.
+
+{METHOD}::
+*Résolution de $(E_0)$.*
+\[
+  ay' + by = 0  \then
+  \frac{y'}{y} = - \frac{b}{a} \then
+  \ln |y| = \int - \frac{b}{a}
+\]
+Soit $F$ une primitive de $- \frac{b}{a}$. Alors,
+\[
+  \ln |y| = F + r \in \sR \then
+  |y| = e^r e^F \then
+  y = a.e^F, a \in \sR
+\]
+En autorisant $a = 0$, on inclut $y = 0_Z$ qui est toujours solution.
++
+Pour que $- \frac{b}{a}$ soit primitivable, on va supposer que _a_ ne s'annule pas,
+  et que _a_ et _b_ sont continues. D'où la définition suivante.
+
+{DEF}::
+Les *points singuliers* de $(E_0)$ sont les points de discontinuité de _b_ et _a_,
+  et tout point où _a_ s'annule.
+
+=== Méthode de la variation de la constante
+
+[horizontal]
+{METHOD}::
+*Résolution de (E) à partir de la solution générale pour $(E_0)$.*
+\[
+  y = f e^F \then
+  y' = f' e^F + f e^F F' = f' e^F -\frac{b}{a}y \\
+  \then ay' + by = af' e^ F -by + by = af'e^F = g \\
+  \then f' = \frac{g}{a}e^{-F}
+  \then y = e^F \int \frac{g}{a}e^{-F} + ce^F
+\]
+
+{NOTA}::
+- Si l'on est sûr de soi, l'on peut directement faire
+  $y = fe^F \then af'e^F = g$.
+- Tout cela sous-entend que $-\frac{b}{a}$ et $\frac{g}{a}e^{-F}$
+  soient continues.
+
+{DEF}::
+Les *points singuliers* de $(E)$ sont les points de discontinuité de _b_, _g_ et _a_,
+  et tout point où _a_ s'annule. +
+La méthode est valide sur tout intervalle ne contenant pas de point de discontinuité.
+
+=== Raccordement de solutions
+
+==== Cadre général
+
+On a un points singulier _a_, une {ED} du premier ordre $(E)$, des solutions $y_b$ et $y_c$ sur deux intervalles
+$B :=\;\]b, a[$ et $C :=\;\]a, c[$, avec $b,c \in \bar{\sR}$. +
+On essaie alors de "raccorder" des solutions sur _B_ avec des solutions sur _C_.
+
+==== Etape 1: Prolongement à l'intervalle $B' := \;\]b, a\]$
+
+[horizontal]
+{METHOD}::
+. *Condition de continuité.* $y$ doit avoir une limite finie à gauche de _a_.
+  Si ce n'est pas le cas ($\infty$ ou aucune limite), le raccordement
+  est impossible. +
+  _Note_ : l'existence et la valeur de la limite peuvent dépendre de la valeur de
+  la constante d'intégration. +
+  Si la limite existe, on prolonge $y$ par continuité à $B'$.
+. *Condition de dérivabilité.* $y$ doit être dérivable à gauche de _a_. +
+  Calculer la limite de la dérivée peut s'avérer difficile ; calculer la
+  limite du taux d'accroissement est parfois plus simple lorsque
+  par exemple $a = y(a) = 0$.
+. *Vérification de l'{ED} pour $t = a$*. +
+  $a(a)y'(a) + b(a)y(a) = g(a)$.
+
+Le cas pour $C'$ est symétrique.
+
+==== Etape 2
+
+[horizontal]
+{LEMME}::
+Si : +
+$-$ $y_b$ et $y_c$ sont solutions sur $B'$ et $C'$, +
+$-$ $y_b(a) = y_c(a), \  y'_b (a) = y' _c (a),$ +
+Alors,
+\[
+  y :=
+  \begin{cases}
+    y_b  &\ \txt{pour} t \leq a \\
+    y_c  &\ \txt{pour} t \geq a
+  \end{cases}
+\]
+est solution de $(E)$ sur $B' \cup C'$.
+
+=== Problème de Cauchy
+
+[horizontal]
+{DEF}::
+On a une {ED1} sous forme résolue : $y' = G(t, y(t)) \  (E)$. +
+On prend un intervalle $I$, $t_0 \in I,\ y_0 \in \sR$. +
+*Problème de Cauchy.* Trouver une solution $y$ de $(E)$ sur $I$
+  telle que $y(t_0) = y_0$ (*condition initiale*). +
+On fixe $I$ et $t_0$, et on fait varier $y_0$. On évalue chaque solution
+  de $(E)$ en $t_0$ :
+\[
+  eval_{t_0,I} : \mapdef
+    {Sol_I(E)}{\sR}{y}{y(t_0)}
+\]
+L'existence d'une solution au problème de Cauchy pour tout $y_0 \in \sR$
+  équivaut à la surjectivité de $eval$ ; l'unicité équivaut à son injectivité ;
+  existence et unicité équivalent alors à sa bijectivité.

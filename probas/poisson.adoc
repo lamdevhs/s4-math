@@ -1,5 +1,5 @@
-= Processus de Poisson et File d'Attente
-Probabilités & Statistiques -- L2 -- 2O17/2O18
+= Processus de Poisson et Files d'Attente
+Probabilités & Statistiques | L2 | 2O17/2O18
 :sectnums:
 :b: $\cB$
 :u: $\gO$
@@ -78,7 +78,9 @@ La résolution donne successivement:
 \[
   p_0 = C_0 e^{-\gl t} \ss C_0 = 1 \txt{car} p_0(0) = 1
     \txt{donc} p_0 = e^{-\gl t} =
-    \frac{(\gl t)^{0}}{0!} e^{-\gl t}\\
+    \frac{(\gl t)^{0}}{0!} e^{-\gl t}
+\]
+\[
   p_1 = C_1 e^{-\gl t} \ss p'_1 = C'_1 e^{-\gl t} - \gl p_1
 \]
 en injectant cela dans $\H{(S^1)}$ il vient :
@@ -90,9 +92,13 @@ en injectant cela dans $\H{(S^1)}$ il vient :
 Par récurrence :
 \[
   C'_n e^{-\gl t} = \gl p_{n-1} =
-    \gl \frac{(\gl t)^{n-1}}{(n-1)!} e^{-\gl t} \\
+    \gl \frac{(\gl t)^{n-1}}{(n-1)!} e^{-\gl t}
+\]
+\[
   C_n = \frac{(\gl t)^{n}}{n!} \txt{donc}
-    p_n(t) = \P(N_t = n) = \frac{(\gl t)^{n}}{n!} e^{-\gl t} \\
+    p_n(t) = \P(N_t = n) = \frac{(\gl t)^{n}}{n!} e^{-\gl t}
+\]
+\[
   \all t \ss N_t \sim \fP(\gl t)
 \]
 
@@ -123,10 +129,10 @@ Fonction de répartition de $\H{T}$:
   \end{cases}
 \]
 On a bien $\H{F_T(+\infty) = 1}$. La densité de probabilité de $\H{T}$
-  est donc $\H{F'_T = \gl e^{-\gl t}}$, donc
-  $\H{T \sim \mathscr{E}(\gl)}$ et donc $\H{\E(T) = \ifrac{\gl}}$.
+  est donc $\H{F'_T = \gl e^{-\gl t} \ss t > 0}$, donc
+  $\H{T \sim \mathscr{E}(\gl)}$ et donc $\H{\E(T) = \cifrac{\gl}}$.
 
-
+//_
 == Graphe de Transition d'un Processus de Poisson
 
 [horizontal]
@@ -140,7 +146,7 @@ On dira que le processus est *dans l'état $\H{n}$ à l'instant $\H{t}$*
 {empty}
 
 Les flèches partant toutes d'un même état doivent avoir des probabilités
-  dont la somme doit donner 1.
+  dont la somme vaut 1.
 
 
 == File D'Attente (exemple)
@@ -153,7 +159,9 @@ Il y a un *guichet* qui sert des clients. Le guichet ne traite qu'une
   de paramètres {lam} et {mu}. +
 Les clients *arrivent et repartent aléatoirement* et de manière
   *indépendante*, indépendamment de $\H{t}$. +
-Tout évènement de probabilité en $\H{\dt^2}$ est supposée négligeable. +
+Tout probabilité en $\H{(\dt)^2}$ (départ et arrivée simultanés,
+  $\H{n}$ départs ou arrivées simultanés, $\H{n > 1}$) est supposée
+  négligeable. +
 Graphe de transition de la file d'attente :
 
 {empty} +
@@ -177,35 +185,39 @@ $\H{\P(N(\tdt) = n | N(t) = n + 1) = \mu \dt}$ +
 Donc :
 \[
   p_n(\tdt) = \gl \dt p_{n-1}(t) + \mu \dt p_{n+1}(t)
-      + (1 - \gl \dt - \mu \dt)p_n(t) \\
+      + (1 - \gl \dt - \mu \dt)p_n(t)
+\]
+\[
   p'_n = \gl p_{n-1} + \mu p_{n+1}
       - (\gl + \mu)p_n
 \]
 Et pour $\H{n = 0}$ :
 \[
   p_0(\tdt) = \mu \dt p_1(t)
-      + (1 - \gl \dt)p_0(t) \\
+      + (1 - \gl \dt)p_0(t)
+\]
+\[
   p'_0 = \mu p_1
       - \gl p_0
 \]
 \[
   \begin{cases}
-  p'_0 + \gl p_0 = \mu p_1  \qquad (S^0) \\
-  p'_n + (\gl + \mu) p_{n} = \gl p_{n-1} + \mu p_{n+1}
-      \qquad (S^n) \ss \all n \gt 0
+  \mu p_1 - \gl p_0 = p'_0 & \qquad (S^0) \\
+  \mu p_{n+1} - \gl p_n = p'_n + \mu p_{n} - \gl p_{n-1}
+      & \qquad (S^n) \ss \all n \gt 0
   \end{cases}
 \]
 On obtient un système trop complexe dans le cas général. On
   peut cependant trouver les solutions constantes, pour lesquelles
-  les $\H{p_i}$ sont des constantes, et donc pour lesquelles
+  les $\H{p_i}$ sont des fonctions constantes, et donc pour lesquelles
   $\H{p'_i = 0}$ :
 \[
   \begin{cases}
-  \mu p_1 - \gl p_0 = 0  \qquad (S^0) \\
-  \mu p_2 - \gl p_1 = \mu p_1 - \gl p_0 = 0
-      \qquad (S^1) \\
-  \mu p_{n+1} - \gl p_n = \mu p_n - \gl p_{n-1} = 0
-      \qquad (S^n) \ss \all n \gt 0
+  \mu p_1 - \gl p_0 = 0  & \qquad (S^0) \\
+  \mu p_2 - \gl p_1 = \mu p_1 - \gl p_0
+      & \qquad (S^1) \\
+  \mu p_{n+1} - \gl p_n = \mu p_n - \gl p_{n-1}
+      & \qquad (S^n) \ss \all n \gt 0
   \end{cases}
 \]
 D'où :
@@ -213,25 +225,27 @@ D'où :
   p_{n+1} = \frac{\gl}{\mu} p_n = \frac{\gl^{n+1}}{\mu^{n+1}} p_0
 \]
 La condition
-  $\H{\sum p_i = p_0 \sum \left ( \frac{\gl}{\mu} \right ) ^k = 1}$
+  $\H{\sum p_i = p_0 \sum \left ( \cfrac{\gl}{\mu} \right ) ^k = 1}$
   permet de déduire que nécessairement $\H{\gl < \mu}$,
-  et surtout : $\H{\frac{p_0}{1 - \frac{\gl}{\mu}}} = 1$ d'où
-  $\H{p_0 = 1 - \frac{\gl}{\mu}}$ et finalement :
+  et surtout : $\H{\cfrac{p_0}{1 - \gl / \mu}} = 1$ d'où
+  $\H{p_0 = 1 - \cfrac{\gl}{\mu}}$ et finalement :
 \[
-  \all n \geq 0 \ss p_n =
+  \all t \geq 0 \ss \all n \geq 0 \ss
+  p_n = \P(N(t) = n) =
   \left ( \frac{\gl}{\mu} \right ) ^n
   \left ( 1 - \frac{\gl}{\mu} \right )
 \]
 
 [horizontal]
 {theorem}::
-*Loi de la longueur L de la file d'attente en régime stationnaire* : +
+*Loi de la longueur L = N(t) de la file d'attente en régime
+  stationnaire* : +
 $\H{-}$ Si $\H{\gl \geq \mu}$, la file d'attente
   s'allonge indéfiniment. +
 $\H{-}$ Sinon,
-  $\H{\P(L = n) = \left( \frac{\gl}{\mu} \right) ^n \left( 1 - \frac{\gl}{\mu} \right) \ss \all n \in \sN }$ +
+  $\H{\P(L = n) = \left( \cfrac{\gl}{\mu} \right) ^n \left( 1 - \cfrac{\gl}{\mu} \right) \ss \all n \in \sN }$ +
 Dans ce cas-là, on remarque que
-  $\H{1 + L \sim \mathscr{G}\left( 1 - \frac{\gl}{\mu} \right)}$. +
+  $\H{1 + L \sim \mathscr{G}\left( 1 - \cfrac{\gl}{\mu} \right)}$. +
 D'où :
 \[
   \E(1 + L) =
@@ -255,28 +269,28 @@ D'où :
 {theorem}::
 Lorsqu'un client arrive, il y a en moyenne $\H{\frac{\gl}{\mu - \gl}}$
   clients qui attendent déjà. Le temps moyen de service d'un client
-  est l'espérance du départ d'un client, qui suit une loi exponentielle,
+  est l'espérance du départ d'un client, qui suit une loi
+  $\H{\mathscr{E}(\mu)}$,
   donc ce temps moyen de service par client est $\H{\ifrac{\mu}}$.
   En conséquence, le temps d'attente moyen T avant d'être servi est
-  $\H{T = \frac{\gl / \mu}{\mu - \gl}}$.
+  $\H{T = \ifrac{\mu} \frac{\gl}{\mu - \gl}}$.
 
 {eg}::
 Si l'on a en moyenne 5 clients/h, et si le service dure 8 min, alors on
-  aura $\H{\gl = 5 \txt{clients/h}}$ et
-  $\H{\mu = 60/8 = 7,5 \txt{clients/h}}$, d'où
-  $\H{\E(L) = \frac{\gl}{\mu - \gl} = \frac{5}{2,5} = 2 \txt{clients}}$
-  et finalement $\H{T = 2 / \mu = 4 / 15 = 16 \txt{min}}$. +
+  aura $\H{\gl = 5}$ clients/h et
+  $\H{\mu = 60/8 = 7,5}$ clients/h, d'où
+  $\H{\E(L) = \frac{\gl}{\mu - \gl} = \frac{5}{2,5} = 2}$ clients
+  et finalement $\H{T = 2 / \mu = 4 / 15 = 16}$ min. +
   Remarquons que
   $\H{\P(L = 0) = 1 - \frac{\gl}{\mu} = 1 - \frac{5}{7,5} = \ifrac{3}}$
   d'où $\H{\P(L > 0) = \frac{2}{3}}$. Cette dernière valeur est
   appelée *taux d'occupation*.
 
-== Modèles plus généraux de Files d'Attentes
+== Modèles plus généraux de Files d'Attente
 
 On généralise le modèle précédent : +
-$\H{-}$ Il peut y avoir un nombre quelconque $\H{x \in \sN^{*\infty}_+}$
-// **
-  de guichets. +
+$\H{-}$ Il peut y avoir un nombre quelconque
+  $\H{x \in |[ 1, \infty \]|}$ de guichets. +
 $\H{-}$ Il peut y avoir une taille limite $\H{y \geq x}$ pour la file
   d'attente : les clients arrivant devant une file pleine se font
   rejeter. +
@@ -306,11 +320,31 @@ $\H{-}$ Files sans attente et sans rejets : $\H{M/M/\infty/\infty}$.
 La méthode de résolution est la même que pour le premier modèle. Au
   lieu de trouver
 \[
-  \all n \geq 0 \ss p_n =
-  \left ( \frac{\gl}{\mu} \right ) ^n
-  p_0
+  \begin{cases}
+  \mu p_1 - \gl p_0 = 0  & \qquad (S^0) \\
+  \mu p_2 - \gl p_1 = \mu p_1 - \gl p_0
+      & \qquad (S^1) \\
+  \mu p_{n+1} - \gl p_n = \mu p_n - \gl p_{n-1}
+     & \qquad (S^n) \ss \all n \gt 0
+  \end{cases}
 \]
-On trouve alors
+on trouve alors
+\[
+  \begin{cases}
+  \mu_1 p_1 - \gl_0 p_0 = 0  & \qquad (S^0) \\
+  \mu_2 p_2 - \gl_1 p_1 = \mu_1 p_1 - \gl_0 p_0
+      & \qquad (S^1) \\
+  \mu_{n+1} p_{n+1} - \gl_n p_n = \mu_n p_n - \gl_{n+1} p_{n-1}
+      & \qquad (S^n) \ss \all n \gt 0
+  \end{cases}
+\]
+d'où
+\[
+  p_{n+1} = \frac{\gl_n}{\mu_{n+1}} p_n =
+    \frac {\gl_n \dotsb \gl_0}
+      {\mu_{n+1} \dotsb \mu_1} p_0
+\]
+et finalement
 \[
   \all n > 0 \ss p_n =
   \frac
@@ -329,8 +363,8 @@ $\H{-}$ $\H{M/M/1/\infty}$ : un unique {lam} puisque la longueur
   de la file n'influe pas sur l'arrivée de nouveaux clients, et un
   unique {mu} car il n'y a qu'un guichet, et car la loi de départ des
   clients ne dépend pas de la longueur de la file, d'où l'on retrouve
-  $\H{p_n = \left ( \frac{\gl}{\mu} \right ) ^n p_0}$. +
-$\H{-}$ $\H{M/M/\infty/\infty}$ : toujours un unique lambda, mais
+  $\H{p_n = \left ( \cfrac{\gl}{\mu} \right ) ^n p_0}$. +
+$\H{-}$ $\H{M/M/\infty/\infty}$ : toujours un unique {lam}, mais
   ici, pour $\H{n}$ clients dans la file, sur les $\H{n}$ guichets
   actifs, n'importe lequel peut relâcher son client. Les guichets
   étant indépendants, on doit sommer la valeur {mu}
@@ -341,12 +375,6 @@ $\H{-}$ $\H{M/M/\infty/\infty}$ : toujours un unique lambda, mais
 {empty} +
 {empty} +
 Donc :
-
-\[
-  \all n \geq 0 \ss p_n =
-  \frac { \gl^n } { n! \mu^n }
-    p_0
-  = \frac {p_0}{n!}
-    \left( \frac {\gl}{\mu} \right) ^ n
-\]
-On reconnaît une loi de Poisson $\H{\mathscr{P}(\gl / \mu)}$.
+$\H{ \all n \geq 0 \ss p_n = \cfrac { \gl^n } { n! \mu^n }  p_0 }$.
+  On reconnaît une loi de Poisson $\H{\mathscr{P}(\gl / \mu)}$, et donc
+  $\H{p_0 = e^{-\gl / \mu}}$.

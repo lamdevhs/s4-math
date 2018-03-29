@@ -5,8 +5,8 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<meta name="author" content="Probabilités &amp; Statistiques -- L2 -- 2O17/2O18">
-<title>Processus de Poisson et File d&#8217;Attente</title>
+<meta name="author" content="Probabilités &amp; Statistiques | L2 | 2O17/2O18">
+<title>Processus de Poisson et Files d&#8217;Attente</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -463,15 +463,17 @@ $(document).on('page:load', ready2);
 
 <body class="article">
 <div id="header">
-<h1>Processus de Poisson et File d&#8217;Attente</h1>
+<h1>Processus de Poisson et Files d&#8217;Attente</h1>
 <div class="details">
-<span id="author" class="author">Probabilités &amp; Statistiques -- L2 -- 2O17/2O18</span><br>
+<span id="author" class="author">Probabilités &amp; Statistiques | L2 | 2O17/2O18</span><br>
 </div>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 \(
+
+
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
 \newcommand{\txt}[1]{\ \ \text{#1}\ \ }
@@ -482,9 +484,12 @@ $(document).on('page:load', ready2);
 
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\ifrac}[1]{\frac{1}{#1}}
+\newcommand{\cifrac}[1]{\cfrac{1}{#1}}
 \newcommand{\setcond}{\;|\;}
 \newcommand{\void}{\varnothing}
 \newcommand{\all}{\forall}
+
+\newcommand{\zzz}{\llbracket}
 
 \newcommand{\ss}{,\ \,}
 
@@ -591,7 +596,12 @@ La résolution donne successivement:
 \[
   p_0 = C_0 e^{-\gl t} \ss C_0 = 1 \txt{car} p_0(0) = 1
     \txt{donc} p_0 = e^{-\gl t} =
-    \frac{(\gl t)^{0}}{0!} e^{-\gl t}\\
+    \frac{(\gl t)^{0}}{0!} e^{-\gl t}
+\]
+
+
+
+\[
   p_1 = C_1 e^{-\gl t} \ss p'_1 = C'_1 e^{-\gl t} - \gl p_1
 \]
 
@@ -609,9 +619,19 @@ Par récurrence :
 
 \[
   C'_n e^{-\gl t} = \gl p_{n-1} =
-    \gl \frac{(\gl t)^{n-1}}{(n-1)!} e^{-\gl t} \\
+    \gl \frac{(\gl t)^{n-1}}{(n-1)!} e^{-\gl t}
+\]
+
+
+
+\[
   C_n = \frac{(\gl t)^{n}}{n!} \txt{donc}
-    p_n(t) = \P(N_t = n) = \frac{(\gl t)^{n}}{n!} e^{-\gl t} \\
+    p_n(t) = \P(N_t = n) = \frac{(\gl t)^{n}}{n!} e^{-\gl t}
+\]
+
+
+
+\[
   \all t \ss N_t \sim \fP(\gl t)
 \]
 </p>
@@ -654,8 +674,8 @@ Fonction de répartition de \(\H{T}\):
 
 
 On a bien \(\H{F_T(+\infty) = 1}\). La densité de probabilité de \(\H{T}\)
-  est donc \(\H{F'_T = \gl e^{-\gl t}}\), donc
-  \(\H{T \sim \mathscr{E}(\gl)}\) et donc \(\H{\E(T) = \ifrac{\gl}}\).</p>
+  est donc \(\H{F'_T = \gl e^{-\gl t} \ss t > 0}\), donc
+  \(\H{T \sim \mathscr{E}(\gl)}\) et donc \(\H{\E(T) = \cifrac{\gl}}\).</p>
 </td>
 </tr>
 </table>
@@ -706,7 +726,9 @@ On a bien \(\H{F_T(+\infty) = 1}\). La densité de probabilité de \(\H{T}\)
   de paramètres \(\H{\gl}\) et \(\H{\mu}\).<br>
 Les clients <strong>arrivent et repartent aléatoirement</strong> et de manière
   <strong>indépendante</strong>, indépendamment de \(\H{t}\).<br>
-Tout évènement de probabilité en \(\H{\dt^2}\) est supposée négligeable.<br>
+Tout probabilité en \(\H{(\dt)^2}\) (départ et arrivée simultanés,
+  \(\H{n}\) départs ou arrivées simultanés, \(\H{n > 1}\)) est supposée
+  négligeable.<br>
 Graphe de transition de la file d&#8217;attente :</p>
 </td>
 </tr>
@@ -747,7 +769,12 @@ Donc :
 
 \[
   p_n(\tdt) = \gl \dt p_{n-1}(t) + \mu \dt p_{n+1}(t)
-      + (1 - \gl \dt - \mu \dt)p_n(t) \\
+      + (1 - \gl \dt - \mu \dt)p_n(t)
+\]
+
+
+
+\[
   p'_n = \gl p_{n-1} + \mu p_{n+1}
       - (\gl + \mu)p_n
 \]
@@ -757,7 +784,12 @@ Et pour \(\H{n = 0}\) :
 
 \[
   p_0(\tdt) = \mu \dt p_1(t)
-      + (1 - \gl \dt)p_0(t) \\
+      + (1 - \gl \dt)p_0(t)
+\]
+
+
+
+\[
   p'_0 = \mu p_1
       - \gl p_0
 \]
@@ -766,25 +798,25 @@ Et pour \(\H{n = 0}\) :
 
 \[
   \begin{cases}
-  p'_0 + \gl p_0 = \mu p_1  \qquad (S^0) \\
-  p'_n + (\gl + \mu) p_{n} = \gl p_{n-1} + \mu p_{n+1}
-      \qquad (S^n) \ss \all n \gt 0
+  \mu p_1 - \gl p_0 = p'_0 & \qquad (S^0) \\
+  \mu p_{n+1} - \gl p_n = p'_n + \mu p_{n} - \gl p_{n-1}
+      & \qquad (S^n) \ss \all n \gt 0
   \end{cases}
 \]
 
 
 On obtient un système trop complexe dans le cas général. On
   peut cependant trouver les solutions constantes, pour lesquelles
-  les \(\H{p_i}\) sont des constantes, et donc pour lesquelles
+  les \(\H{p_i}\) sont des fonctions constantes, et donc pour lesquelles
   \(\H{p'_i = 0}\) :
 
 \[
   \begin{cases}
-  \mu p_1 - \gl p_0 = 0  \qquad (S^0) \\
-  \mu p_2 - \gl p_1 = \mu p_1 - \gl p_0 = 0
-      \qquad (S^1) \\
-  \mu p_{n+1} - \gl p_n = \mu p_n - \gl p_{n-1} = 0
-      \qquad (S^n) \ss \all n \gt 0
+  \mu p_1 - \gl p_0 = 0  & \qquad (S^0) \\
+  \mu p_2 - \gl p_1 = \mu p_1 - \gl p_0
+      & \qquad (S^1) \\
+  \mu p_{n+1} - \gl p_n = \mu p_n - \gl p_{n-1}
+      & \qquad (S^n) \ss \all n \gt 0
   \end{cases}
 \]
 
@@ -797,13 +829,14 @@ D&#8217;où :
 
 
 La condition
-  \(\H{\sum p_i = p_0 \sum \left ( \frac{\gl}{\mu} \right ) ^k = 1}\)
+  \(\H{\sum p_i = p_0 \sum \left ( \cfrac{\gl}{\mu} \right ) ^k = 1}\)
   permet de déduire que nécessairement \(\H{\gl < \mu}\),
-  et surtout : \(\H{\frac{p_0}{1 - \frac{\gl}{\mu}}} = 1\) d&#8217;où
-  \(\H{p_0 = 1 - \frac{\gl}{\mu}}\) et finalement :
+  et surtout : \(\H{\cfrac{p_0}{1 - \gl / \mu}} = 1\) d&#8217;où
+  \(\H{p_0 = 1 - \cfrac{\gl}{\mu}}\) et finalement :
 
 \[
-  \all n \geq 0 \ss p_n =
+  \all t \geq 0 \ss \all n \geq 0 \ss
+  p_n = \P(N(t) = n) =
   \left ( \frac{\gl}{\mu} \right ) ^n
   \left ( 1 - \frac{\gl}{\mu} \right )
 \]
@@ -816,13 +849,14 @@ La condition
 \(\huge{\top}\)
 </td>
 <td class="hdlist2">
-<p><strong>Loi de la longueur L de la file d&#8217;attente en régime stationnaire</strong> :<br>
+<p><strong>Loi de la longueur L = N(t) de la file d&#8217;attente en régime
+  stationnaire</strong> :<br>
 \(\H{-}\) Si \(\H{\gl \geq \mu}\), la file d&#8217;attente
   s&#8217;allonge indéfiniment.<br>
 \(\H{-}\) Sinon,
-  \(\H{\P(L = n) = \left( \frac{\gl}{\mu} \right) ^n \left( 1 - \frac{\gl}{\mu} \right) \ss \all n \in \sN }\)<br>
+  \(\H{\P(L = n) = \left( \cfrac{\gl}{\mu} \right) ^n \left( 1 - \cfrac{\gl}{\mu} \right) \ss \all n \in \sN }\)<br>
 Dans ce cas-là, on remarque que
-  \(\H{1 + L \sim \mathscr{G}\left( 1 - \frac{\gl}{\mu} \right)}\).<br>
+  \(\H{1 + L \sim \mathscr{G}\left( 1 - \cfrac{\gl}{\mu} \right)}\).<br>
 D&#8217;où :
 
 \[
@@ -859,10 +893,11 @@ D&#8217;où :
 <td class="hdlist2">
 <p>Lorsqu&#8217;un client arrive, il y a en moyenne \(\H{\frac{\gl}{\mu - \gl}}\)
   clients qui attendent déjà. Le temps moyen de service d&#8217;un client
-  est l&#8217;espérance du départ d&#8217;un client, qui suit une loi exponentielle,
+  est l&#8217;espérance du départ d&#8217;un client, qui suit une loi
+  \(\H{\mathscr{E}(\mu)}\),
   donc ce temps moyen de service par client est \(\H{\ifrac{\mu}}\).
   En conséquence, le temps d&#8217;attente moyen T avant d&#8217;être servi est
-  \(\H{T = \frac{\gl / \mu}{\mu - \gl}}\).</p>
+  \(\H{T = \ifrac{\mu} \frac{\gl}{\mu - \gl}}\).</p>
 </td>
 </tr>
 <tr>
@@ -871,10 +906,10 @@ D&#8217;où :
 </td>
 <td class="hdlist2">
 <p>Si l&#8217;on a en moyenne 5 clients/h, et si le service dure 8 min, alors on
-  aura \(\H{\gl = 5 \txt{clients/h}}\) et
-  \(\H{\mu = 60/8 = 7,5 \txt{clients/h}}\), d&#8217;où
-  \(\H{\E(L) = \frac{\gl}{\mu - \gl} = \frac{5}{2,5} = 2 \txt{clients}}\)
-  et finalement \(\H{T = 2 / \mu = 4 / 15 = 16 \txt{min}}\).<br>
+  aura \(\H{\gl = 5}\) clients/h et
+  \(\H{\mu = 60/8 = 7,5}\) clients/h, d&#8217;où
+  \(\H{\E(L) = \frac{\gl}{\mu - \gl} = \frac{5}{2,5} = 2}\) clients
+  et finalement \(\H{T = 2 / \mu = 4 / 15 = 16}\) min.<br>
   Remarquons que
   \(\H{\P(L = 0) = 1 - \frac{\gl}{\mu} = 1 - \frac{5}{7,5} = \ifrac{3}}\)
   d&#8217;où \(\H{\P(L > 0) = \frac{2}{3}}\). Cette dernière valeur est
@@ -886,12 +921,12 @@ D&#8217;où :
 </div>
 </div>
 <div class="sect1">
-<h2 id="_modèles_plus_généraux_de_files_d_attentes">6. Modèles plus généraux de Files d&#8217;Attentes</h2>
+<h2 id="_modèles_plus_généraux_de_files_d_attente">6. Modèles plus généraux de Files d&#8217;Attente</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>On généralise le modèle précédent :<br>
-\(\H{-}\) Il peut y avoir un nombre quelconque \(\H{x \in \sN^{*\infty}_+}\)
-  de guichets.<br>
+\(\H{-}\) Il peut y avoir un nombre quelconque
+  \(\H{x \in |[ 1, \infty ]|}\) de guichets.<br>
 \(\H{-}\) Il peut y avoir une taille limite \(\H{y \geq x}\) pour la file
   d&#8217;attente : les clients arrivant devant une file pleine se font
   rejeter.<br>
@@ -935,13 +970,39 @@ Notation d&#8217;un modèle : \(\H{A/D/x/y}\) où A et D désignent des types
   lieu de trouver
 
 \[
-  \all n \geq 0 \ss p_n =
-  \left ( \frac{\gl}{\mu} \right ) ^n
-  p_0
+  \begin{cases}
+  \mu p_1 - \gl p_0 = 0  & \qquad (S^0) \\
+  \mu p_2 - \gl p_1 = \mu p_1 - \gl p_0
+      & \qquad (S^1) \\
+  \mu p_{n+1} - \gl p_n = \mu p_n - \gl p_{n-1}
+     & \qquad (S^n) \ss \all n \gt 0
+  \end{cases}
 \]
 
 
-On trouve alors
+on trouve alors
+
+\[
+  \begin{cases}
+  \mu_1 p_1 - \gl_0 p_0 = 0  & \qquad (S^0) \\
+  \mu_2 p_2 - \gl_1 p_1 = \mu_1 p_1 - \gl_0 p_0
+      & \qquad (S^1) \\
+  \mu_{n+1} p_{n+1} - \gl_n p_n = \mu_n p_n - \gl_{n+1} p_{n-1}
+      & \qquad (S^n) \ss \all n \gt 0
+  \end{cases}
+\]
+
+
+d&#8217;où
+
+\[
+  p_{n+1} = \frac{\gl_n}{\mu_{n+1}} p_n =
+    \frac {\gl_n \dotsb \gl_0}
+      {\mu_{n+1} \dotsb \mu_1} p_0
+\]
+
+
+et finalement
 
 \[
   \all n > 0 \ss p_n =
@@ -967,8 +1028,8 @@ On trouve alors
   de la file n&#8217;influe pas sur l&#8217;arrivée de nouveaux clients, et un
   unique \(\H{\mu}\) car il n&#8217;y a qu&#8217;un guichet, et car la loi de départ des
   clients ne dépend pas de la longueur de la file, d&#8217;où l&#8217;on retrouve
-  \(\H{p_n = \left ( \frac{\gl}{\mu} \right ) ^n p_0}\).<br>
-\(\H{-}\) \(\H{M/M/\infty/\infty}\) : toujours un unique lambda, mais
+  \(\H{p_n = \left ( \cfrac{\gl}{\mu} \right ) ^n p_0}\).<br>
+\(\H{-}\) \(\H{M/M/\infty/\infty}\) : toujours un unique \(\H{\gl}\), mais
   ici, pour \(\H{n}\) clients dans la file, sur les \(\H{n}\) guichets
   actifs, n&#8217;importe lequel peut relâcher son client. Les guichets
   étant indépendants, on doit sommer la valeur \(\H{\mu}\)
@@ -982,27 +1043,17 @@ On trouve alors
 <p><br>
 <br>
 <br>
-Donc :</p>
-</div>
-<div class="paragraph">
-<p>
-\[
-  \all n \geq 0 \ss p_n =
-  \frac { \gl^n } { n! \mu^n }
-    p_0
-  = \frac {p_0}{n!}
-    \left( \frac {\gl}{\mu} \right) ^ n
-\]
-
-
-On reconnaît une loi de Poisson \(\H{\mathscr{P}(\gl / \mu)}\).</p>
+Donc :
+\(\H{ \all n \geq 0 \ss p_n = \cfrac { \gl^n } { n! \mu^n }  p_0 }\).
+  On reconnaît une loi de Poisson \(\H{\mathscr{P}(\gl / \mu)}\), et donc
+  \(\H{p_0 = e^{-\gl / \mu}}\).</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-29 01:11:33 CEST
+Last updated 2018-03-29 14:28:02 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">

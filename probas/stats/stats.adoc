@@ -1,0 +1,132 @@
+= Statistique Inférentielle
+Probabilités & Statistiques | L2 | 2O17/2O18
+//:toc:
+:sectnums:
+:axiom: %Large[bb A]
+:def: %huge[triangleq]
+:prop: %Large[cl P]
+:eg: %Large[cl @eg]
+:nota: %huge[i]
+:formula: %huge[phi]
+:theorem: %huge[top]
+:proof: %huge[square]
+:model: %huge[fk m]
+//
+:va: variable aléatoire
+:vas: variables aléatoires
+:vad: {va} discrète
+:ssi: *ssi*
+:cad: c'est-à-dire
+//
+:arr: $\H{\longrightarrow}$
+
+include_latex_macros::m2.tex[]
+
+== Echantillon
+
+[horizontal]
+{model}::
+On a un ensemble d'*individus* %Om, appelé *population*. On observe sur
+  celle-ci des {va} %[X \to NN, ZZ, RR] . La variable est dite
+  *quantitative* si l'ensemble d'arrivée est numérique, elle est
+  *qualitative* dans le cas contraire.
++
+On considère %n individus %[om.1 To om.n in Om] formant un *échantillon*.
+  On *observe* alors les valeurs %[x.1 To x.n = X(om.1) To X(om.n)] .
+
+{def}::
+Une variable quantitative %X est *discrète* si %X(Om) est inclus
+  dans un ensemble %E discret, {cad} un ensemble pour laquelle la seule
+  topologie est %Part(E) . Elle est *continue* dans le cas contraire.
+  %NN,ZZ sont discrets, à l'inverse de %QQ,RR,CC .
+
+Dans le cas de valeurs discrètes, on peut regrouper les observations
+  faites sur l'échantillon. On trouve %k valeurs distinctes observées
+  %[(ww x.1 To ww x.k)] , chacune étant observée %n.j fois, de telle sorte que
+  %[Sum j 1 k n.j = n] , {cad} la taille de l'échantillon.
+
+Il arrive qu'on traite des variables continues comme des variables
+  discrètes, en groupant les observations dans des *classes*,
+  typiquement des intervalles. Exemple : tranches d'âge.
+
+[horizontal]
+{def}::
+On appelle *moyenne de l'échantillon*
+  %[bar x := dinv n [Sum i 1 n] x.i = dinv n [Sum j 1 k] n.j ww x.j]
+
+{def}::
+On appelle *variance de l'échantillon*
+%...
+  s.x"2 :=
+    dinv n [Sum i 1 n](x.i - bar x)"2
+  = dinv n [Sum j 1 k] n.j (ww x.j - bar x)"2
+...%
+%...
+  = dinv n left ( [Sum i 1 n] x.i"2 right ) - bar x"2
+  = dinv n left ( [Sum j 1 n] n.j x.j"2 right ) - bar x"2
+...%
+La variance est nulle %ssi tous les %x.i sont égales, auquel cas on
+  aurait %[bar x = x.i] .
+
+{def}::
+On appelle *écart-type de l'échantillon* %s.x:=sqrt[s.x"2]
+
+{model}::
+On prend pour hypothèse que les %x.i sont les observations d'une même
+  variable aléatoire et que ces observations sont mutuellement
+  indépendantes. +
+On va supposer que l'on connaît la nature de cette {va}, (e.g. on va
+  supposer qu'elle est gaussienne), et on essaie alors d'en estimer les
+  paramètres.
+
+{def}::
+On appelle *échantillon théorique de taille* %n de la {va} %X un n-uplet
+  %(X.n) de {vas} mutuellement indépendantes et de même loi que %X .
+  Cet échantillon théorique a une moyenne
+  %[bar X = dinv n [Sum i 1 n] X.i] qui est une {va}.
+
+== Intervalle de confiance pour la moyenne d'un échantillon Gaussien
+La moyenne %bar[x] de cet échantillon étant supposée connue. +
+On sait que la moyenne et variance de la somme de deux {va} est la somme
+  de l'une ou l'autre. Si les lois sont Gaussiennes, la somme des lois
+  est encore Gaussienne. +
+Si les %X.i suivent une loi %[sc N(mu,sig"2)] alors
+  %[bar X sim sc N(mu, sig"2 / n)] .
+
+On recherche un intervalle %I centré en %mu tel que
+  %[Pr(bar X in I) geq 1 - aa] où %1-aa est le *niveau de confiance*. +
+On pose %[Z := dfrac [bar X - mu] [sig/sqrt n]] qui est la variable
+  centrée réduite associée à %bar[X] . Alors %[Z sim sc N(0, 1"2)] .
+
+On considère %[F.Z(t) = Pi(t) = 1 - Pi(-t)] . On cherche %beta tel que
+%...
+  1 - aa = Pr(Z in bk[-beta,beta]) = Pi(beta) - Pi(-beta)
+  then
+  2Pi(beta) - 1 = 1 - aa
+  then
+  Pi(beta) = 1 - frac aa 2
+...%
+On trouve %beta en utilisant les tables de %Pi , puis :
+%...
+  P(Z in bk[-beta, beta])
+  = P left (
+    dfrac [bar X - mu] [sig/sqrt n] in bk[-beta, beta]
+  right )
+  = P left(
+    bar X in
+    Bk[mu - beta frac sig [sqrt n], mu + beta frac sig [sqrt n]] =: I
+  right)
+...%
+On suppose alors, au niveau de confiance %1-aa , que la moyenne observée
+  %bar[x] , en tant que réalisation de %bar[X], appartient à cet
+  intervalle %I, d'où l'estimation de %mu :
+%...
+  bar x in I
+  iff
+  mu in Bk[bar x - beta frac sig [sqrt n],
+    bar x + beta frac sig [sqrt n]]
+...%
+Le niveau de confiance %1-aa n'intervient qu'à travers
+  la valeur de %[beta = Pi"[-1] left( 1 - dfrac [aa] 2 right)] .
+// \  leftrightharpoons leftrightharpoons leftrightharpoons \  f
+// longrightarrow leftrightharpoons rightarrowtail leftrightarrows rightarrowtail  twoheadrightarrow multimap Rrightarrow

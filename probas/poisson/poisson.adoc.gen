@@ -334,7 +334,7 @@ on trouve alors
   \mu_1 p_1 - \gl_0 p_0 = 0  & \qquad (S^0) \\
   \mu_2 p_2 - \gl_1 p_1 = \mu_1 p_1 - \gl_0 p_0
       & \qquad (S^1) \\
-  \mu_{n+1} p_{n+1} - \gl_n p_n = \mu_n p_n - \gl_{n+1} p_{n-1}
+  \mu_{n+1} p_{n+1} - \gl_n p_n = \mu_n p_n - \gl_{n-1} p_{n-1}
       & \qquad (S^n) \ss \all n \gt 0
   \end{cases}
 \]
@@ -369,12 +369,52 @@ $\H{-}$ $\H{M/M/\infty/\infty}$ : toujours un unique {lam}, mais
   actifs, n'importe lequel peut relâcher son client. Les guichets
   étant indépendants, on doit sommer la valeur {mu}
   (vitesse d'un guichet) par le nombre de guichets actifs, qui dépend
-  de l'état dans lequel le système se trouve :
-
+  de l'état dans lequel le système se trouve : +
 {empty} +
 {empty} +
 {empty} +
-Donc :
+{empty} +
+{empty} +
+Donc : +
 $\H{ \all n \geq 0 \ss p_n = \cfrac { \gl^n } { n! \mu^n }  p_0 }$.
   On reconnaît une loi de Poisson $\H{\mathscr{P}(\gl / \mu)}$, et donc
   $\H{p_0 = e^{-\gl / \mu}}$.
+
+// ---------------
+// ---------------
+// ---------------
+// ---------------
+[horizontal]
+{eg}::
+$\:-\:$ $\:M/M/k/k\:$ : $\:k\:$ guichets, aucune attente, rejets possibles. +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+{empty} +
+Les $\:p_n\:$ sont nuls pour $\:n>k\:$ ; les $\:\lam_n\:$ sont identiques avant $\:k\:$ ,
+  et valent $\:0\:$ pour $\:{n \geq k}\:$ ; les $\:\mu_n\:$ sont proportionnels à $\:n,\:$ et
+  valent $\:0\:$ pour $\:n>k\:$ ; les équations deviennent alors :
+\[
+  \begin{cases}
+  \mu p_1 - \lam p_0 = 0  & \qquad (S^0) \\
+  2\mu p_2 - \lam p_1 = \mu p_1 - \lam p_0 & \qquad (S^1) \\
+  (n+1)\mu p_{n+1} - \lam p_n = n \mu p_n - \lam p_{n-1} &
+        \qquad (S^n) \ss \all n \in \range 1 {k-1} \\
+  0 = k \mu p_k - \lam p_{k-1} & \qquad (S^k)
+  \end{cases}
+\]
+Au final :
+\[
+  \forall n \in \range 1 k \ss
+  p_n =
+    \frac {p_0}{n!}
+    {\left( \frac \lam \mu \right)}^n
+  \sss
+  p_0 = {\left (
+    \sum \limits_{n=0}^k  \ifrac {n!} {\left( \frac \lam \mu \right)}^n
+  \right)} ^{-1}
+\]
+La probabilité d'un rejet est celle que tous les guichets soient
+  occupés, elle vaut donc précisément $\:p_k\:$ .

@@ -1,0 +1,224 @@
+= Equations Différentielles Scalaires d'Ordre $\:k\:$
+[ L2 ] [ 2O17/2O18 ]
+:sectnums:
+//:toc:
+:axiom: $\:\Large{\bb A}\:$
+:def: $\:\huge{\triangleq}\:$
+:prop: $\:\Large{\cl P}\:$
+:eg: $\:\Large{\cl eg}\:$
+:nota: $\:\huge{i}\:$
+:formula: $\:\huge{\phi}\:$
+:theorem: $\:\huge{\top}\:$
+:proof: $\:\huge{\square}\:$
+:model: $\:\huge{\fk m}\:$
+:lemme: $\:\huge{\cl L}\:$
+:corollary: $\:\huge{\scr C}\:$
+//
+:b: $\:\Borel\:$
+:u: $\:\Om\:$
+:w: $\:\om\:$
+:s0: $\:(S.0)\:$
+:s: $\:(S)\:$
+//
+:ev: espace vectoriel
+:evs: espaces vectoriels
+:sev: sous-espace vectoriel
+:sevs: sous-espaces vectoriels
+:sea: sous-espace affine
+:seas: sous-espaces affines
+:applin: application linéaire
+:edlin: équation différentielle linéaire
+:edslin: équations différentielles linéaires
+:ed: équation différentielle
+:eds: équations différentielles
+:ed1: équation différentielle du 1er ordre
+:sys: système
+//
+:cad: c'est-à-dire
+
+include_latex_macros::m3.tex[]
+
+== Définitions Générales
+
+[horizontal]
+{def}::
+Une *{ed} scalaire d'ordre* $\:p\:$ est une équation de la forme :
+\[
+  F(t, y, y' \To y^{(p)}) = 0 \qquad (S)
+\]
+où $\:{F: \RR \times \KK^{p+1} \to \KK }\:$ est donnée. L'inconnue est
+  une fonction $\:{y : \RR \to \KK}\:$ $\:p\:$ fois dérivable. Cette
+  équation est "résolue" en la dérivée p-ième si elle peut se
+  réécrire sous la forme :
+\[
+  y^{(p)} = G(t, y, y' \To y^{(p-1)})
+\]
+
+{def}::
+Une *{ed} linéaire scalaire d'ordre* $\:p\:$ est de la forme :
+\[
+  {\Sum k 0 p} \aa_k(t)y^{(k)}(t) = \beta(t)
+\]
+La linéarité entraîne que l'espace des solutions, s'il n'est
+  pas vide, est un espace affine dirigé par l'ensemble des
+  solutions de l'équation homogène associée.
+
+== Résolution des {edslin} à coefficients constants : cas simple
+
+\[
+  (E) \qquad
+  \aa_p y^{(p)} + \dotsb + \aa_0 y = \beta
+  \ss \aa_i \in \KK
+\]
+
+[horizontal]
+{def}::
+Le *polynôme caractéristique de* $\:(E)\:$ est :
+\[
+  P = \aa_p X^p + \dotsb + \aa_0
+\]
+
+Si $\:P(\lam)=0\:$ , alors $\:\elt\:$ est solution de l'équation
+  homogène associée :
+\[
+  {\Sum k 0 p} \aa_k(\elt)^{(k)} =
+  \elt {\Sum k 0 p} \aa_k \lam^k =
+  \elt P(\lam) = 0
+\]
+
+[horizontal]
+{theorem}::
+Si $\:P\:$ n'a que des racines simples $\:{\lam_1 \To \lam_p}\:$ alors les
+  fonctions $\:(e^{\lam_k t})\:$ forment une base de l'{ev} des
+  solutions homogènes sur $\:\RR,\:$ {cad} pour $\:{t \in \RR}\:$ .
++
+La base est réelle si les $\:\lam_k\:$ sont tous réels, complexe
+  dans tous les cas. Si $\:P\:$ est à coefficients réels et
+  $\:{\lam = a + i b \in \CC \setminus \RR}\:$ est racine, alors
+  $\:\bar{\lam}\:$ est aussi racine. Les solutions réelles
+  correspondantes seront alors
+  $\:{f(t) = e^{a t}\cos(b t)}\:$ et $\:{g(t) = e^{a t}\sin(b t)}\:$ car
+  $\:\Vect(f,g)=\Vect(\elt,e^{\bar{\lam}t})\:$ en tant que
+  $\:{\CC \ev}\:$ .
++
+On suppose que $\:{\beta = \gam \et \mu \ss \gam,\mu \in \KK}\:$
+  et que $\:P(\mu)\neq0\:$ . Dans ce cas, il existe alors une
+  solution particulière de $\:(E)\:$ $\:{s = \th \et \mu}\:$ :
+\[
+  \th \et \mu P(\mu) = \gam \et \mu
+  \iff \th  = \dfrac \gam {P(\mu)}
+\]
+
+== Résolution des {edslin} à coefficients constants : cas compliqué
+
+A partir d'un polynôme $\:P\:$ quelconque, on définit
+  l'opérateur différentiel :
+\[
+  P \left(\ddt \right) =
+  {\Sum k 0 p} \aa_k \frac {d^k} {dt^k}
+\]
+D'où
+\[
+  (E) \iff
+  P \left(\ddt \right)(y) = \beta
+\]
+Si $\:P\:$ et $\:Q\:$ sont deux polynômes, alors
+  $\:{P \left(\ddt \right) \circ Q \left(\ddt \right) = (P \circ Q)\left(\ddt \right)}\:$
+
+On s'intéresse dans un premier temps à $\:Q(X)=(X-\lam)\:$ et
+  à $\:{y = t^q \et \mu \ss q \geq 1}\:$ .
+
+[horizontal]
+{lemme}::
+\[
+  Q \lp \ddt \rp (t^q \et \mu)
+  = \lp \ddt - \lam \rp (t^q \et \mu)
+  = \et \mu (q t^{q-1} + (\mu - \lam) t^q)
+\]
+Pour $\:\mu=\lam\:$ , on trouve alors simplement
+  $\:{\et \mu q t^{q-1}}\:$ . Pour $\:{\mu \neq \lam}\:$ , le résultat
+  est un polynôme de même degré que $\:t^q\:$ .
+
+{corollary}::
+Si $\:\lam\:$ est racine de $\:P\:$ de multiplicité $\:k\:$ , et si
+  $\:R\:$ est un polynôme de degré $\:l,\:$ alors
+\[
+  P \lp \ddt \rp (R(t) \elt) = 0
+\]
+dans le cas où $\:l-k<0\:$ . Sinon, le résultat est de la
+  forme $\:S(t)\elt\:$ avec $\:\deg(S)=l-k\:$ .
+
+{proof}::
+$\:P=T(X)(X-\lam)^k\:$ avec $\:T(\lam)\neq0\:$ . Donc :
+\[
+  P \lp \ddt \rp = T \lp \ddt \rp \circ \lp \ddt - \lam \rp ^k
+\]
+D'après le *lemme*, $\:{\lp \ddt - \lam \rp (R \elt) = U \elt}\:$
+  avec $\:{\deg(U) = \deg(R) - 1}\:$ . +
+Par récurrence :
+$\:{\lp \ddt - \lam \rp ^k (R \elt) = V \elt}\:$ avec
+  $\:\deg(V)=\max(0,\deg(R)-k)=\max(0,l-k)\:$ . +
+D'où
+\[
+  P \lp \ddt \rp (R \elt)
+  = T \lp \ddt \rp (V \elt)
+  = S \elt
+\]
+et comme $\:T(\lam)\neq0\:$ ,
+  $\:\deg(S)=\deg(V)=\max(0,l-k)\:$ .
+
+{theorem}::
+*Résolution de l'équation homogène :* +
+$\:P\:$ admet $\:s\:$ racines $\:\lam_1{ \To }\lam_s{\in \CC}\:$ de
+  multiplicités respectives $\:m_1{\To}m_s{\ss \Sum i 1 s m_i = \deg P}\:$ . +
+Une base complexe des solutions homogènes sur $\:t{\in}\RR\:$
+  est alors :
+\[
+  {\Union i 1 s}
+  \lp
+    {\Union j 1 {m_i}} t^j \et{\lam_i}
+  \rp
+  = (\et{\lam_1}, t \et{\lam_1} \To
+    t^{m_1} \et{\lam_1}, \et{\lam_2}, \dots )
+\]
+Ici, chaque élément de la famille correspond aux
+  hypothèses du corollaire dans le cas où $\:l-k<0\:$ .
+
+== Second Membre Particulier
+
+On s'intéressera à des seconds membres de la forme
+  $\:Q(t){\et \mu}\:$ .
+
+[horizontal]
+{nota}::
+Toute combinaison linéaire $\:\sum{Q_i}\et{\mu_i}\:$ peut être
+  traitée par la même technique, par le principe
+  de superposition :
+\[
+  \begin{cases}
+  P \lp \ddt \rp (\hat y_1) & = \beta_1 \\
+  P \lp \ddt \rp (\hat y_2) & = \beta_2
+  \end{cases}
+  \implies
+  P \lp \ddt \rp (a \hat y_1 + z \hat y_2)
+    = a \beta_1 + z \beta_2
+  \ss a,z \in \KK
+\]
+
+{theorem}::
+Si $\:\mu\:$ n'est pas racine de $\:P\:$ , il existe une solution
+  particulière $\:\hat{y}=R(t)\et{\mu}\:$ avec $\:\deg(R)=\deg(Q)\:$ .
+  Si $\:\mu\:$ est racine de $\:P\:$ de multiplicité $\:k\:$ , il existe
+  une solution particulière $\:\hat{y}=R(t)\et{\mu}\cdot{t^k}\:$
+  avec $\:\deg(R)=\deg(Q)\:$ . +
+En ajoutant le facteur $\:t^k\:$ , on s'assure en effet que
+  l'image de $\:\hat{y}\:$ par
+  $\:{P \lp \ddt \rp = T \lp \ddt \rp \circ \lp \ddt - \mu \rp ^k}\:$
+  sera $\:{\et \mu}\:$ facteur d'un polynôme de même degré que
+  $\:R\:$ , donc de même degré que $\:Q\:$ .
+
+*Méthode pratique* : On résoud l'injection des
+  coefficients inconnus de $\:R\:$ dans $\:(E)\:$ et on identifie
+  avec les coefficients du second membre, {cad} avec
+  ceux de $\:Q\:$ , le facteur $\:\et{\mu}\:$ se simplifiant des
+  deux côtés.

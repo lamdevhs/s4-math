@@ -1,0 +1,77 @@
+== Dimension de l'Orthogonal d'un s.e.v pour une Forme Quadratique Non Dégénérée en Dimension Finie
+[ L2 ] [ 2O17/2O18 ]
+:axiom: $\:\Large{\bb U}\:$
+:def: $\:\huge{\triangleq}\:$
+:prop: $\:\Large{\cl P}\:$
+:eg: $\:\Large{\cl eg}\:$
+:nota: $\:\huge{i}\:$
+:formula: $\:\huge{\phi}\:$
+:theorem: $\:\huge{\top}\:$
+:proof: $\:\huge{\square}\:$
+:model: $\:\huge{\fk m}\:$
+:lemme: $\:\huge{\cl L}\:$
+:corollary: $\:\huge{\scr C}\:$
+
+include_latex_macros::tex/m3.tex[]
+
+[horizontal]
+{theorem}::
+Soit $\:E\:$ un espace vectoriel sur $\:\KK,\:$ corps commutatif de caractéristique différente de 2,
+et $\:q\:$ une forme quadratique sur $\:E,\:$ avec $\:f\:$ dénotant sa forme polaire.
+Si $\:E\:$ est de dimension finie $\:n,\:$ et si $\:f\:$ est non dégénérée, alors,
+pour tout s.e.v $\:F\:$ de dimension $\:p\:$ ,
+\[
+  \dim \ortho F = \dim E - \dim F = n - p
+\]
+
+{proof}::
+Soient $\:\BaseC\:$ une base de $\:E,\:$ $\:{Q:= \bk{q}^\BaseC},\:$ $\:{\Base = (b_1 \To b_p)}\:$ une base de $\:F\:$ ,
+et $\:{x \in E}\:$ quelconque. En notant $\:X=\bk{x}^\BaseC\:$ et $\:B_i=\bk{b_i}^\BaseC,\:$
+on obtient l'équivalence:
+\[
+  x \in \ortho F = \ortho {\{b_1 \To b_p\}} \iff
+//
+  \all i \in \range 1 p \ss
+  \tp X Q B_i = \bk{f(x,b_i)} = \bk{0}
+\]
++
+Notons $\:\phi\:$ l'endomorphisme de $\:E\:$ dont la
+matrice dans $\:\BaseC\:$ est $\:Q\:$ . Comme $\:f\:$ est non dégénérée, $\:Q\:$ est inversible, d'où $\:\phi\:$ est un
+automorphisme de $\:E\:$ . L'image par $\:\phi\:$ de $\:\Base\:$ , $\:{\BaseU := (\phi(b_1) \To \phi(b_p))}\:$
+est donc également une famille libre de $\:p\:$ vecteurs de $\:E\:$ , c'est-à-dire $\:\rg(\BaseU)=\rg(\Base)=p\:$ .
++
+Définissons la matrice $\:{B \in \MM_n(\KK)}\:$ dont les $\:p\:$ premières colonnes sont formées
+des $\:p\:$ vecteurs-colonne $\:B_i\:$ , et dont les $\:n-p\:$ dernières colonnes sont toutes
+$\:\bk{0_E}^\BaseC\:$ . Alors :
+\[
+  \rg(B) = \rg(b_1 \To b_p, 0_E \To 0_E) = \dim \Vect(b_1 \To b_p, 0_E \To 0_E) = \dim F = p
+\]
++
+Soit alors $\:{U := Q B}\:$ . Par produit matriciel, les $\:p\:$ premières colonnes de $\:U\:$ sont formées des
+vecteurs-colonne $\:{Q B_i = \bk{\phi(b_i)}^\BaseC}\:$ , et bien sûr les $\:n-p\:$ dernières colonnes de $\:U\:$ sont
+pleines de zéros. D'où comme pour $\:B,\:$ $\:\rg(U)=\rg(\BaseU)=p\:$ . Remarquons alors que :
+\[
+  \tp X U = \tp X Q B =
+    \begin{bmatrix}
+      f(x,b_1) & \cdots & f(x,b_p) & 0 & \cdots & 0
+    \end{bmatrix} \in \MM_{1,n}(\KK)
+\]
+On obtient alors :
+\[
+  x \in \ortho F
+  \iff
+    \begin{bmatrix}
+      f(x,b_1) & \cdots & f(x,b_p) & 0 & \cdots & 0
+    \end{bmatrix}
+    = \begin{bmatrix} 0 & \cdots & 0 \end{bmatrix}
+\]
+\[
+  \iff \tp X Q B = \tp X U = \tp(\tp U X)
+  = \tp \begin{bmatrix} 0 \\ \vdots \\ 0 \end{bmatrix}
+\]
++
+En notant $\:\lam\:$ l'endomorphisme de $\:E\:$ dont la matrice dans $\:\BaseC\:$ est $\:\tp{U},\:$ on en déduit que
+$\:{x \in \ortho F \iff x \in \ker \lam}\:$ , donc $\:{\ortho F = \ker \lam}\:$ . D'où finalement :
+\[
+  \dim \ortho F = \dim \ker \lam = \dim E - \rg(\tp U) = \dim E - \rg(U) = n - p
+\]

@@ -1,0 +1,120 @@
+== Existence par Construction d'une BOG pour une Forme Quadratique en Dimension Finie
+:axiom: %Large[bb U]
+:def: %huge[triangleq]
+:prop: %Large[cl P]
+:eg: %Large[cl @eg]
+:nota: %huge[i]
+:formula: %huge[phi]
+:theorem: %huge[top]
+:proof: %huge[square]
+:model: %huge[fk m]
+:lemme: %huge[cl L]
+:corollary: %huge[scr C]
+
+include_latex_macros::tex/m3.tex[]
+
+[horizontal]
+{theorem}::
+Soit %E un espace vectoriel sur %KK, corps commutatif de caractéristique différente de 2,
+et %q une forme quadratique sur %E, avec %f dénotant sa forme polaire.
+Si %E est de dimension finie %n, alors il existe une base orthogonale pour %E, c'est-à-dire
+une base %[Base := (e.1 To e.n)] de %E telle que
+%...
+  all i,j in range 1 n ss
+  i neq j implies f(e.i,e.j) = 0
+...%
+
+_Preuve par construction. L'idée est de se rammener à
+appliquer Gram-Schmidt -- bien sûr, en remplaçant dans l'algorithme le produit scalaire par_ %f .
+
+Soit %p la dimension de %ortho[E] . Si
+%p=n, %ortho[E]=E, donc %f=q=0 et toute base de %E
+est une BOG. +
+Dans le cas contraire, soit %r:=n-p>0 .
+On part d'une base %sc[N] de %ortho[E] que l'on complète avec %r vecteurs %[sc A := (a.1 To a.r)]
+ pour obtenir une base de %E . On définit :
+%...
+  A := Vect(a.1 To a.r)
+...%
+en sorte que %[A oplus ortho E = E] , et plus particulièrement, %[sc A inter ortho E = void] .
+
+Remarquons que Gram-Schmidt fonctionne pour une forme quadratique quelconque pour toute famille libre de %m vecteurs
+qui contiendrait au plus un unique vecteur dans %C(q) (le dernier). La méthode nécessite en effet à chaque
+étape %k[leq]m que l'on puisse diviser par les valeurs %q(v.i), avec %i[lt]k et %v.i étant le vecteur obtenu
+à l'étape %i de l'algorithme. De plus, il se trouve que si à l'étape %k, le vecteur %u.k (le k-ième vecteur de
+la famille d'origine) n'est pas dans %C(q), alors l'on peut montrer que %v.k, le vecteur obtenu en appliquant
+Gram-Schmidt sur %u.k, n'est pas non plus dans %C(q), car %q(u.k)=q(v.k) :
+%...
+  v.k = u.k - Sum i 1 [k-1] frac [f(u.k, v.i)] [q(v.i)] v.i
+...%
+d'où
+%...
+  q(v.k) = q(u.k) +
+  q lp Sum i 1 [k-1] frac [f(u.k, v.i)] [q(v.i)] v.i rp
+  - f lp u.k, Sum i 1 [k-1] frac [f(u.k, v.i)] [q(v.i)] v.i rp
+...%
+Remarquons que le terme du milieu vaut :
+%...
+  q lp Sum i 1 [k-1] frac [f(u.k, v.i)] [q(v.i)] v.i rp
+  = Sum i 1 [k-1] Sum j 1 [k-1]
+  frac [f(u.k, v.i)] [q(v.i)]
+  frac [f(u.k, v.j)] [q(v.j)]
+  f(v.i, v.j)
+...%
+Par hypothèse de récurrence, %[v.i perp v.j iff f(v.i,v.j) = 0] dès que %i[neq]j,
+d'où les seuls termes qui survivent sont :
+%...
+  q lp Sum i 1 [k-1] frac [f(u.k, v.i)] [f(v.i, v.i)] v.i rp
+  = Sum i 1 [k-1]
+  lp frac [f(u.k, v.i)] [q(v.i)] rp "2
+  q(v.i)
+  = Sum i 1 [k-1]
+  frac [f(u.k, v.i)"2] [q(v.i)]
+...%
+Or, le terme de droite lui vaut :
+%...
+  - f lp u.k, Sum i 1 [k-1] frac [f(u.k, v.i)] [q(v.i)] v.i rp =
+  - Sum i 1 [k-1] frac [f(u.k, v.i)"2] [q(v.i)]
+...%
+En réinjectant on obtient finalement la simplification :
+%...
+  q(v.k) = q(u.k) +
+  Sum i 1 [k-1]
+  frac [f(u.k, v.i)"2] [q(v.i)]
+  - Sum i 1 [k-1]
+  frac [f(u.k, v.i)"2] [q(v.i)]
+  = q(u.k)
+...%
+Donc, on peut appliquer Gram-Schmidt sur toute famille %[(u.1 To u.m)] dont seul le
+dernier vecteur %u.m est éventuellement dans %C(q) . La validité de Gram-Schmidt se base
+en effet uniquement sur la bilinéarité de tout produit scalaire, et le fait que le cône isotrope pour un
+produit scalaire est réduit à %{0} :
+%...
+  all n in range 1 m ss
+  all k in range 1 n ss
+  f(v.n,v.k) = f(u.n - Sum i 1 [j-1] ,v.k)
+...%
+
+Revenons à la famille %sc[A] . Si %card(sc[A]inter[C(q)])leq1, il n'y a qu'à appliquer Gram-Schmidt
+sur %sc[A] (en mettant l'éventuel vecteur isotrope en fin de liste) et par rapport à %f pour obtenir
+une BOG de %A .
+
+S'il y en a plus d'un, soit %x un vecteur de %sc[A] isotrope. Si pour tout autre vecteur %[y in sc[A]],
+%f(x,y)=0, alors %[x in ortho E], ce qui est absurde comme vu précédemment.
+Il existe donc %[z in A] tel que %f(x,z)neq0 . Alors :
+%...
+ q(x+z)=q(z)+2f(x,z)
+...%
+Si %[q(x+z) neq 0 iff 2f(x,z) neq -q(z)], on définit %x':=x+z, et alors %[x' not in C(q)] .
+Sinon, on définit %x':=x+(x+z), et alors %q(x')=q(x+z)+2f(x,x+z)=2f(x,z)neq0 par hypothèse.
+En tous les cas, la nouvelle famille que l'on notera abusivement encore %sc[A], pour laquelle %x
+est remplacée par %x', est toujours une base de %A, puisque remplacer un vecteur d'une famille par la
+somme de ce vecteur et d'une combinaison linéaire de vecteurs de cette famille ne change
+pas la liberté de celle-ci.
+
+Donc à partir d'une base quelconque de %A, on peut obtenir une base %sc[A] dont seul un vecteur au plus est dans
+%C(q). En appliquant Gram-Schmidt sur celle-ci, on obtient une BOG %Base de %A pour la restriction de %q à %A
+.
+
+En faisant l'union de %Base et de %sc[N], on obtient finalement une BOG de %E puisque tout vecteur de cette union
+est orthogonal à tout autre vecteur de cette union.

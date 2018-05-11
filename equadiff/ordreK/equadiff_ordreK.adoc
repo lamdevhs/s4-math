@@ -36,7 +36,7 @@
 //
 :cad: c'est-à-dire
 
-include_latex_macros::m3.tex[]
+include_latex_macros::tex/m3.tex[]
 
 == Définitions Générales
 
@@ -146,7 +146,7 @@ Si %lam est racine de %P de multiplicité %k , et si
   P lp ddt rp (R(t) elt) = 0
 ...%
 dans le cas où %l-k<0 . Sinon, le résultat est de la
-  forme %S(t)elt avec %deg(S)=l-k .
+  forme %S(t)elt avec %deg(S)=l-k , donc avec %S[neq]0 .
 
 {proof}::
 %P=T(X)(X-lam)"k avec %T(lam)neq0 . Donc :
@@ -157,7 +157,14 @@ D'après le *lemme*, %[lp ddt - lam rp (R elt) = U elt]
   avec %[deg(U) = deg(R) - 1] . +
 Par récurrence :
 %[lp ddt - lam rp "k (R elt) = V elt] avec
-  %deg(V)=max(0,deg(R)-k)=max(0,l-k) . +
++
+%...
+  begin[@cases]
+    V = 0 qquad & txt[@si] l - k < 0 \\
+    deg(V)= l - k geq 0 qquad & txt[@sinon]
+  end[@cases]
+...%
+
 D'où
 %...
   P lp ddt rp (R elt)
@@ -165,7 +172,7 @@ D'où
   = S elt
 ...%
 et comme %T(lam)neq0 ,
-  %deg(S)=deg(V)=max(0,l-k) .
+  %deg(S)=deg(V) .
 
 {theorem}::
 *Résolution de l'équation homogène :* +
@@ -176,10 +183,10 @@ Une base complexe des solutions homogènes sur %t[in]RR
 %...
   [Union i 1 s]
   lp
-    [Union j 1 [m.i]] t"j et[lam.i]
+    [Union j 0 [m.i - 1]] t"j et[lam.i]
   rp
   = (et[lam.1], t et[lam.1] To
-    t"[m.1] et[lam.1], et[lam.2], dots )
+    t"[m.1 - 1] et[lam.1], et[lam.2], dots )
 ...%
 Ici, chaque élément de la famille correspond aux
   hypothèses du corollaire dans le cas où %l-k<0 .

@@ -1,0 +1,54 @@
+== Existence par Construction d'une BOG pour une Forme Quadratique en Dimension Finie
+:axiom: $\:\Large{\bb U}\:$
+:def: $\:\huge{\triangleq}\:$
+:prop: $\:\Large{\cl P}\:$
+:eg: $\:\Large{\cl eg}\:$
+:nota: $\:\huge{i}\:$
+:formula: $\:\huge{\phi}\:$
+:theorem: $\:\huge{\top}\:$
+:proof: $\:\huge{\square}\:$
+:model: $\:\huge{\fk m}\:$
+:lemme: $\:\huge{\cl L}\:$
+:corollary: $\:\huge{\scr C}\:$
+
+include_latex_macros::tex/m3.tex[]
+
+[horizontal]
+{theorem}::
+Soit $\:E\:$ un espace vectoriel sur $\:\KK,\:$ corps commutatif de caractéristique différente de 2,
+et $\:q\:$ une forme quadratique sur $\:E,\:$ avec $\:f\:$ dénotant sa forme polaire.
+Si $\:E\:$ est de dimension finie $\:n,\:$ alors il existe une base orthogonale pour $\:E,\:$ c'est-à-dire
+une base $\:{\Base := (e_1 \To e_n)}\:$ de $\:E\:$ telle que
+\[
+  \all i,j \in \range 1 n \ss
+  i \neq j \implies f(e_i,e_j) = 0
+\]
+
+La preuve fait un usage important de cette formule :
+\[
+  \dim \ortho F - \dim (F \inter \ortho E) = \dim E - \dim F
+\]
+pour tout sous-espace vectoriel $\:F\:$ de $\:E\:$ . Dans le cas où l'on sait que $\:{\ortho E \subset F},\:$
+on obtient des résultats encore plus précis :
+\[
+  F \inter \ortho E = \ortho E \implies
+  p := \dim \ortho F - \dim \ortho E = \dim E - \dim F
+\]
+En remarquant que, puisque $\:{F \subset E},\:$ $\:{\ortho E \subset \ortho F}\:$ nécéssairement,
+on obtient que $\:p=\dim(G)\:$ avec $\:{G \oplus \ortho E = \ortho F}\:$ un supplémentaire quelconque.
+D'où alors si $\:{\dim E - \dim F > 0},\:$ nécéssairement $\:{\dim G > 0},\:$ ce qui signifie
+que l'on peut trouver un vecteur de $\:E\:$ non nul qui ne soit pas dans $\:F,\:$ mais qui soit orthogonal
+à tous les éléments de $\:F\:$ .
+
+On définit $\:F_0:=\ortho{E},\:$ dont on choisit une base quelconque
+$\:\Base_0\:$ . Cette famille de $\:E\:$ est orthogonale. Si $\:{\dim E - \dim F_0 = 0},\:$ alors $\:E=\ortho{E}\:$ et on
+a trouvé une BOG de $\:E\:$ .
+Sinon, il faut trouver un vecteur orthogonal à $\:F_0\:$ et qui ne soit pas dans $\:F_0,\:$ pour obtenir une famille
+orthogonale $\:\Base_1\:$ strictement plus grande que $\:\Base_0\:$ . La formule du début donne ici :
+\[
+  \dim \ortho F - \dim (F \inter \ortho E) = \dim E - \dim F > 0
+  \iff
+  \dim \ortho {\ortho E} - \dim (\ortho E \inter \ortho E) = \dim E - \dim \ortho E > 0
+\]
+foo
+

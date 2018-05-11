@@ -5,8 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<meta name="author" content="[ L2 ] [ 2O17/2O18 ]">
-<title>Equations Différentielles Scalaires d&#8217;Ordre \(\:k\:\)</title>
+<title>Existence par Construction d&#8217;une BOG pour une Forme Quadratique en Dimension Finie</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -463,13 +462,10 @@ $(document).on('page:load', ready2);
 
 <body class="article">
 <div id="header">
-<h1>Equations Différentielles Scalaires d&#8217;Ordre \(\:k\:\)</h1>
-<div class="details">
-<span id="author" class="author">[ L2 ] [ 2O17/2O18 ]</span><br>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="_existence_par_construction_d_une_bog_pour_une_forme_quadratique_en_dimension_finie">Existence par Construction d&#8217;une BOG pour une Forme Quadratique en Dimension Finie</h2>
 <div class="sectionbody">
 \(
 \newcommand{\ww}{\tilde}
@@ -557,97 +553,6 @@ $(document).on('page:load', ready2);
 \newcommand{\lp}{\left(}
 \newcommand{\rp}{\right)}
 \)
-</div>
-</div>
-<div class="sect1">
-<h2 id="_définitions_générales">1. Définitions Générales</h2>
-<div class="sectionbody">
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-\(\:\huge{\triangleq}\:\)
-</td>
-<td class="hdlist2">
-<p>Une <strong>équation différentielle scalaire d&#8217;ordre</strong> \(\:p\:\) est une équation de la forme :
-
-\[
-  F(t, y, y' \To y^{(p)}) = 0 \qquad (S)
-\]
-
-
-où \(\:{F: \RR \times \KK^{p+1} \to \KK }\:\) est donnée. L&#8217;inconnue est
-  une fonction \(\:{y : \RR \to \KK}\:\) \(\:p\:\) fois dérivable. Cette
-  équation est "résolue" en la dérivée p-ième si elle peut se
-  réécrire sous la forme :
-
-\[
-  y^{(p)} = G(t, y, y' \To y^{(p-1)})
-\]
-</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-\(\:\huge{\triangleq}\:\)
-</td>
-<td class="hdlist2">
-<p>Une <strong>équation différentielle linéaire scalaire d&#8217;ordre</strong> \(\:p\:\) est de la forme :
-
-\[
-  {\Sum k 0 p} \aa_k(t)y^{(k)}(t) = \beta(t)
-\]
-
-
-La linéarité entraîne que l&#8217;espace des solutions, s&#8217;il n&#8217;est
-  pas vide, est un espace affine dirigé par l&#8217;ensemble des
-  solutions de l&#8217;équation homogène associée.</p>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_résolution_des_équations_différentielles_linéaires_à_coefficients_constants_cas_simple">2. Résolution des équations différentielles linéaires à coefficients constants : cas simple</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>
-\[
-  (E) \qquad
-  \aa_p y^{(p)} + \dotsb + \aa_0 y = \beta
-  \ss \aa_i \in \KK
-\]
-</p>
-</div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-\(\:\huge{\triangleq}\:\)
-</td>
-<td class="hdlist2">
-<p>Le <strong>polynôme caractéristique de</strong> \(\:(E)\:\) est :
-
-\[
-  P = \aa_p X^p + \dotsb + \aa_0
-\]
-</p>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Si \(\:P(\lam)=0\:\) , alors \(\:\elt\:\) est solution de l&#8217;équation
-  homogène associée :
-
-\[
-  {\Sum k 0 p} \aa_k(\elt)^{(k)} =
-  \elt {\Sum k 0 p} \aa_k \lam^k =
-  \elt P(\lam) = 0
-\]
-</p>
-</div>
 <div class="hdlist">
 <table>
 <tr>
@@ -655,234 +560,65 @@ La linéarité entraîne que l&#8217;espace des solutions, s&#8217;il n&#8217;es
 \(\:\huge{\top}\:\)
 </td>
 <td class="hdlist2">
-<p>Si \(\:P\:\) n&#8217;a que des racines simples \(\:{\lam_1 \To \lam_p}\:\) alors les
-  fonctions \(\:(e^{\lam_k t})\:\) forment une base de l&#8217;espace vectoriel des
-  solutions homogènes sur \(\:\RR,\:\) c&#8217;est-à-dire pour \(\:{t \in \RR}\:\) .</p>
-<div class="paragraph">
-<p>La base est réelle si les \(\:\lam_k\:\) sont tous réels, complexe
-  dans tous les cas. Si \(\:P\:\) est à coefficients réels et
-  \(\:{\lam = a + i b \in \CC \setminus \RR}\:\) est racine, alors
-  \(\:\bar{\lam}\:\) est aussi racine. Les solutions réelles
-  correspondantes seront alors
-  \(\:{f(t) = e^{a t}\cos(b t)}\:\) et \(\:{g(t) = e^{a t}\sin(b t)}\:\) car
-  \(\:\Vect(f,g)=\Vect(\elt,e^{\bar{\lam}t})\:\) en tant que
-  \(\:{\CC \ev}\:\) .</p>
-</div>
-<div class="paragraph">
-<p>On suppose que \(\:{\beta = \gam \et \mu \ss \gam,\mu \in \KK}\:\)
-  et que \(\:P(\mu)\neq0\:\) . Dans ce cas, il existe alors une
-  solution particulière de \(\:(E)\:\) \(\:{s = \th \et \mu}\:\) :
+<p>Soit \(\:E\:\) un espace vectoriel sur \(\:\KK,\:\) corps commutatif de caractéristique différente de 2,
+et \(\:q\:\) une forme quadratique sur \(\:E,\:\) avec \(\:f\:\) dénotant sa forme polaire.
+Si \(\:E\:\) est de dimension finie \(\:n,\:\) alors il existe une base orthogonale pour \(\:E,\:\) c&#8217;est-à-dire
+une base \(\:{\Base := (e_1 \To e_n)}\:\) de \(\:E\:\) telle que
 
 \[
-  \th \et \mu P(\mu) = \gam \et \mu
-  \iff \th  = \dfrac \gam {P(\mu)}
+  \all i,j \in \range 1 n \ss
+  i \neq j \implies f(e_i,e_j) = 0
 \]
 </p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_résolution_des_équations_différentielles_linéaires_à_coefficients_constants_cas_compliqué">3. Résolution des équations différentielles linéaires à coefficients constants : cas compliqué</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A partir d&#8217;un polynôme \(\:P\:\) quelconque, on définit
-  l&#8217;opérateur différentiel :
-
-\[
-  P \left(\ddt \right) =
-  {\Sum k 0 p} \aa_k \frac {d^k} {dt^k}
-\]
-
-
-D&#8217;où
-
-\[
-  (E) \iff
-  P \left(\ddt \right)(y) = \beta
-\]
-
-
-Si \(\:P\:\) et \(\:Q\:\) sont deux polynômes, alors
-  \(\:{P \left(\ddt \right) \circ Q \left(\ddt \right) = (P \circ Q)\left(\ddt \right)}\:\)</p>
-</div>
-<div class="paragraph">
-<p>On s&#8217;intéresse dans un premier temps à \(\:Q(X)=(X-\lam)\:\) et
-  à \(\:{y = t^q \et \mu \ss q \geq 1}\:\) .</p>
-</div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-\(\:\huge{\cl L}\:\)
-</td>
-<td class="hdlist2">
-<p>
-\[
-  Q \lp \ddt \rp (t^q \et \mu)
-  = \lp \ddt - \lam \rp (t^q \et \mu)
-  = \et \mu (q t^{q-1} + (\mu - \lam) t^q)
-\]
-
-
-Pour \(\:\mu=\lam\:\) , on trouve alors simplement
-  \(\:{\et \mu q t^{q-1}}\:\) . Pour \(\:{\mu \neq \lam}\:\) , le résultat
-  est un polynôme de même degré que \(\:t^q\:\) .</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-\(\:\huge{\scr C}\:\)
-</td>
-<td class="hdlist2">
-<p>Si \(\:\lam\:\) est racine de \(\:P\:\) de multiplicité \(\:k\:\) , et si
-  \(\:R\:\) est un polynôme de degré \(\:l,\:\) alors
-
-\[
-  P \lp \ddt \rp (R(t) \elt) = 0
-\]
-
-
-dans le cas où \(\:l-k<0\:\) . Sinon, le résultat est de la
-  forme \(\:S(t)\elt\:\) avec \(\:\deg(S)=l-k\:\) , donc avec \(\:S{\neq}0\:\) .</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-\(\:\huge{\square}\:\)
-</td>
-<td class="hdlist2">
-<p>\(\:P=T(X)(X-\lam)^k\:\) avec \(\:T(\lam)\neq0\:\) . Donc :
-
-\[
-  P \lp \ddt \rp = T \lp \ddt \rp \circ \lp \ddt - \lam \rp ^k
-\]
-
-
-D&#8217;après le <strong>lemme</strong>, \(\:{\lp \ddt - \lam \rp (R \elt) = U \elt}\:\)
-  avec \(\:{\deg(U) = \deg(R) - 1}\:\) .<br>
-Par récurrence :
-\(\:{\lp \ddt - \lam \rp ^k (R \elt) = V \elt}\:\) avec</p>
-<div class="paragraph">
-<p>
-\[
-  \begin{cases}
-    V = 0 \qquad & \txt{si} l - k < 0 \\
-    \deg(V)= l - k \geq 0 \qquad & \txt{sinon}
-  \end{cases}
-\]
-</p>
-</div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>D&#8217;où
+<p>La preuve fait un usage important de cette formule :
 
 \[
-  P \lp \ddt \rp (R \elt)
-  = T \lp \ddt \rp (V \elt)
-  = S \elt
+  \dim \ortho F - \dim (F \inter \ortho E) = \dim E - \dim F
 \]
 
 
-et comme \(\:T(\lam)\neq0\:\) ,
-  \(\:\deg(S)=\deg(V)\:\) .</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">\(\:\huge{\top}\:\)</dt>
-<dd>
-<p><strong>Résolution de l&#8217;équation homogène :</strong><br>
-\(\:P\:\) admet \(\:s\:\) racines \(\:\lam_1{ \To }\lam_s{\in \CC}\:\) de
-  multiplicités respectives \(\:m_1{\To}m_s{\ss \Sum i 1 s m_i = \deg P}\:\) .<br>
-Une base complexe des solutions homogènes sur \(\:t{\in}\RR\:\)
-  est alors :
+pour tout sous-espace vectoriel \(\:F\:\) de \(\:E\:\) . Dans le cas où l&#8217;on sait que \(\:{\ortho E \subset F},\:\)
+on obtient des résultats encore plus précis :
 
 \[
-  {\Union i 1 s}
-  \lp
-    {\Union j 0 {m_i - 1}} t^j \et{\lam_i}
-  \rp
-  = (\et{\lam_1}, t \et{\lam_1} \To
-    t^{m_1 - 1} \et{\lam_1}, \et{\lam_2}, \dots )
+  F \inter \ortho E = \ortho E \implies
+  p := \dim \ortho F - \dim \ortho E = \dim E - \dim F
 \]
 
 
-Ici, chaque élément de la famille correspond aux
-  hypothèses du corollaire dans le cas où \(\:l-k<0\:\) .</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_second_membre_particulier">4. Second Membre Particulier</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>On s&#8217;intéressera à des seconds membres de la forme
-  \(\:Q(t){\et \mu}\:\) .</p>
-</div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-\(\:\huge{i}\:\)
-</td>
-<td class="hdlist2">
-<p>Toute combinaison linéaire \(\:\sum{Q_i}\et{\mu_i}\:\) peut être
-  traitée par la même technique, par le principe
-  de superposition :
-
-\[
-  \begin{cases}
-  P \lp \ddt \rp (\hat y_1) & = \beta_1 \\
-  P \lp \ddt \rp (\hat y_2) & = \beta_2
-  \end{cases}
-  \implies
-  P \lp \ddt \rp (a \hat y_1 + z \hat y_2)
-    = a \beta_1 + z \beta_2
-  \ss a,z \in \KK
-\]
-</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-\(\:\huge{\top}\:\)
-</td>
-<td class="hdlist2">
-<p>Si \(\:\mu\:\) n&#8217;est pas racine de \(\:P\:\) , il existe une solution
-  particulière \(\:\hat{y}=R(t)\et{\mu}\:\) avec \(\:\deg(R)=\deg(Q)\:\) .
-  Si \(\:\mu\:\) est racine de \(\:P\:\) de multiplicité \(\:k\:\) , il existe
-  une solution particulière \(\:\hat{y}=R(t)\et{\mu}\cdot{t^k}\:\)
-  avec \(\:\deg(R)=\deg(Q)\:\) .<br>
-En ajoutant le facteur \(\:t^k\:\) , on s&#8217;assure en effet que
-  l&#8217;image de \(\:\hat{y}\:\) par
-  \(\:{P \lp \ddt \rp = T \lp \ddt \rp \circ \lp \ddt - \mu \rp ^k}\:\)
-  sera \(\:{\et \mu}\:\) facteur d&#8217;un polynôme de même degré que
-  \(\:R\:\) , donc de même degré que \(\:Q\:\) .</p>
-</td>
-</tr>
-</table>
+En remarquant que, puisque \(\:{F \subset E},\:\) \(\:{\ortho E \subset \ortho F}\:\) nécéssairement,
+on obtient que \(\:p=\dim(G)\:\) avec \(\:{G \oplus \ortho E = \ortho F}\:\) un supplémentaire quelconque.
+D&#8217;où alors si \(\:{\dim E - \dim F > 0},\:\) nécéssairement \(\:{\dim G > 0},\:\) ce qui signifie
+que l&#8217;on peut trouver un vecteur de \(\:E\:\) non nul qui ne soit pas dans \(\:F,\:\) mais qui soit orthogonal
+à tous les éléments de \(\:F\:\) .</p>
 </div>
 <div class="paragraph">
-<p><strong>Méthode pratique</strong> : On résoud l&#8217;injection des
-  coefficients inconnus de \(\:R\:\) dans \(\:(E)\:\) et on identifie
-  avec les coefficients du second membre, c&#8217;est-à-dire avec
-  ceux de \(\:Q\:\) , le facteur \(\:\et{\mu}\:\) se simplifiant des
-  deux côtés.</p>
+<p>On définit \(\:F_0:=\ortho{E},\:\) dont on choisit une base quelconque
+\(\:\Base_0\:\) . Cette famille de \(\:E\:\) est orthogonale. Si \(\:{\dim E - \dim F_0 = 0},\:\) alors \(\:E=\ortho{E}\:\) et on
+a trouvé une BOG de \(\:E\:\) .
+Sinon, il faut trouver un vecteur orthogonal à \(\:F_0\:\) et qui ne soit pas dans \(\:F_0,\:\) pour obtenir une famille
+orthogonale \(\:\Base_1\:\) strictement plus grande que \(\:\Base_0\:\) . La formule du début donne ici :
+
+\[
+  \dim \ortho F - \dim (F \inter \ortho E) = \dim E - \dim F > 0
+  \iff
+  \dim \ortho {\ortho E} - \dim (\ortho E \inter \ortho E) = \dim E - \dim \ortho E > 0
+\]
+
+
+foo</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-11 14:47:12 CEST
+Last updated 2018-04-17 17:40:34 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">

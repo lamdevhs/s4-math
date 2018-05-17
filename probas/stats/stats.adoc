@@ -27,7 +27,7 @@ include_latex_macros::m2.tex[]
 [horizontal]
 {model}::
 On a un ensemble d'*individus* %Om, appelé *population*. On observe sur
-  celle-ci des {va} %[X to NN, ZZ, RR] . La variable est dite
+  celle-ci des {va} %[X : Om to NN, ZZ, RR] . La variable est dite
   *quantitative* si l'ensemble d'arrivée est numérique, elle est
   *qualitative* dans le cas contraire.
 +
